@@ -1,0 +1,16 @@
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\bin\Debug\net8.0-windows\PictureViewer23521696.exe
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\bin\Debug\net8.0-windows\PictureViewer23521696.deps.json
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\bin\Debug\net8.0-windows\PictureViewer23521696.runtimeconfig.json
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\bin\Debug\net8.0-windows\PictureViewer23521696.dll
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\bin\Debug\net8.0-windows\PictureViewer23521696.pdb
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.Form1.resources
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.csproj.GenerateResource.cache
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.GeneratedMSBuildEditorConfig.editorconfig
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.AssemblyInfoInputs.cache
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.AssemblyInfo.cs
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.csproj.CoreCompileInputs.cache
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.dll
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\refint\PictureViewer23521696.dll
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.pdb
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\PictureViewer23521696.genruntimeconfig.cache
+D:\DemoWinFormApp\PictureViewer23521696\PictureViewer23521696\obj\Debug\net8.0-windows\ref\PictureViewer23521696.dll
