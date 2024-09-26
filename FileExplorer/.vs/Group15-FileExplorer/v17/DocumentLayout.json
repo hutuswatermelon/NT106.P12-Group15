@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WinForm\\Group15-FileExplorer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|d:\\winform\\group15-fileexplorer\\group15-fileexplorer\\fileexplorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|solutionrelative:group15-fileexplorer\\fileexplorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|D:\\WinForm\\Group15-FileExplorer\\group15-fileexplorer\\fileexplorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|solutionrelative:group15-fileexplorer\\fileexplorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|D:\\WinForm\\Group15-FileExplorer\\group15-fileexplorer\\fileexplorer.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A82B9C7-D29A-4DD2-AE50-4DA6BB5F9089}|Group15-FileExplorer\\Group15-FileExplorer.csproj|solutionrelative:group15-fileexplorer\\fileexplorer.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileExplorer.cs [Design]",
+              "DocumentMoniker": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.cs",
+              "RelativeDocumentMoniker": "Group15-FileExplorer\\FileExplorer.cs",
+              "ToolTip": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.cs [Design]",
+              "RelativeToolTip": "Group15-FileExplorer\\FileExplorer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T17:14:00.805Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileExplorer.cs",
+              "DocumentMoniker": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.cs",
+              "RelativeDocumentMoniker": "Group15-FileExplorer\\FileExplorer.cs",
+              "ToolTip": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.cs",
+              "RelativeToolTip": "Group15-FileExplorer\\FileExplorer.cs",
+              "ViewState": "AQIAAGYAAAAAAAAAAAD4v3QAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T14:29:36.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FileExplorer.Designer.cs",
+              "DocumentMoniker": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.Designer.cs",
+              "RelativeDocumentMoniker": "Group15-FileExplorer\\FileExplorer.Designer.cs",
+              "ToolTip": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\FileExplorer.Designer.cs",
+              "RelativeToolTip": "Group15-FileExplorer\\FileExplorer.Designer.cs",
+              "ViewState": "AQIAAPgAAAAAAAAAAAAYwA8BAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T14:26:26.216Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
