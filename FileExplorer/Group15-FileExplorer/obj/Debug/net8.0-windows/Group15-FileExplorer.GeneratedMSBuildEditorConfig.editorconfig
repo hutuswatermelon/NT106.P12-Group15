@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Group15_FileExplorer
-build_property.ProjectDir = D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\
+build_property.ProjectDir = D:\WinForm\NT106.P12-Group15\FileExplorer\Group15-FileExplorer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\Group15-FileExplorer.csproj",
+      "projectUniqueName": "D:\\WinForm\\NT106.P12-Group15\\FileExplorer\\Group15-FileExplorer\\Group15-FileExplorer.csproj",
       "projectName": "Group15-FileExplorer",
-      "projectPath": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\Group15-FileExplorer.csproj",
+      "projectPath": "D:\\WinForm\\NT106.P12-Group15\\FileExplorer\\Group15-FileExplorer\\Group15-FileExplorer.csproj",
       "packagesPath": "C:\\Users\\CHT\\.nuget\\packages\\",
-      "outputPath": "D:\\WinForm\\Group15-FileExplorer\\Group15-FileExplorer\\obj\\",
+      "outputPath": "D:\\WinForm\\NT106.P12-Group15\\FileExplorer\\Group15-FileExplorer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\CHT\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -2,7 +2,7 @@
 
 namespace Group15_FileExplorer
 {
-    partial class Form1
+    partial class fExplorer
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,113 +31,42 @@ namespace Group15_FileExplorer
         private void InitializeComponent()
         {
             components = new Container();
-            mnuRightClick = new ContextMenuStrip(components);
-            copyToolStripMenuItem = new ToolStripMenuItem();
-            copyToolStripMenuItem1 = new ToolStripMenuItem();
-            cutToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem1 = new ToolStripMenuItem();
-            backgroundWorker1 = new BackgroundWorker();
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnBack = new Button();
             btnForward = new Button();
             btnRefresh = new Button();
             txtPath = new TextBox();
-            txtSearch = new TextBox();
             btnOpen = new Button();
+            labelPath = new Label();
             splitContainer1 = new SplitContainer();
-            treeView1 = new TreeView();
+            treeView = new TreeView();
             progressBar1 = new ProgressBar();
-            listView1 = new ListView();
-            ColumnHeader0 = new ColumnHeader();
+            listViewApp = new ListView();
+            columnHeader5 = new ColumnHeader();
             ColumnHeader1 = new ColumnHeader();
             ColumnHeader2 = new ColumnHeader();
             ColumnHeader3 = new ColumnHeader();
             ColumnHeader4 = new ColumnHeader();
             backgroundWorkerDelete = new BackgroundWorker();
-            mnuRightClick.SuspendLayout();
+            folderBrowserDialog = new FolderBrowserDialog();
+            mnuRightClick = new ContextMenuStrip(components);
+            copyToolStripMenuItem = new ToolStripMenuItem();
+            cutToolStripMenuItem = new ToolStripMenuItem();
+            pasteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            renameToolStripMenuItem = new ToolStripMenuItem();
+            newFolderToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            mnuRightClick.SuspendLayout();
             SuspendLayout();
-            // 
-            // mnuRightClick
-            // 
-            mnuRightClick.ImageScalingSize = new Size(20, 20);
-            mnuRightClick.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem, copyToolStripMenuItem1, cutToolStripMenuItem, toolStripMenuItem2, toolStripSeparator1, deleteToolStripMenuItem, deleteToolStripMenuItem1 });
-            mnuRightClick.Name = "contextMenuStrip1";
-            mnuRightClick.Size = new Size(124, 154);
-            mnuRightClick.ItemClicked += contextMenuStrip1_ItemClicked;
-            // 
-            // copyToolStripMenuItem
-            // 
-            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copyToolStripMenuItem.ShowShortcutKeys = false;
-            copyToolStripMenuItem.Size = new Size(123, 24);
-            copyToolStripMenuItem.Text = "Open";
-            // 
-            // copyToolStripMenuItem1
-            // 
-            copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            copyToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.C;
-            copyToolStripMenuItem1.ShowShortcutKeys = false;
-            copyToolStripMenuItem1.Size = new Size(123, 24);
-            copyToolStripMenuItem1.Text = "Copy";
-            copyToolStripMenuItem1.Click += btnCopy_Click;
-            // 
-            // cutToolStripMenuItem
-            // 
-            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            cutToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            cutToolStripMenuItem.ShowShortcutKeys = false;
-            cutToolStripMenuItem.Size = new Size(123, 24);
-            cutToolStripMenuItem.Text = "Cut";
-            cutToolStripMenuItem.Click += btnCut_Click;
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.ShortcutKeys = Keys.Control | Keys.V;
-            toolStripMenuItem2.ShowShortcutKeys = false;
-            toolStripMenuItem2.Size = new Size(123, 24);
-            toolStripMenuItem2.Text = "Paste";
-            toolStripMenuItem2.Click += btnPaste_Click;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(120, 6);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.ShortcutKeys = Keys.Delete;
-            deleteToolStripMenuItem.ShowShortcutKeys = false;
-            deleteToolStripMenuItem.Size = new Size(123, 24);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += btnDelete_Click;
-            // 
-            // deleteToolStripMenuItem1
-            // 
-            deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            deleteToolStripMenuItem1.ShortcutKeys = Keys.F2;
-            deleteToolStripMenuItem1.ShowShortcutKeys = false;
-            deleteToolStripMenuItem1.Size = new Size(123, 24);
-            deleteToolStripMenuItem1.Text = "Rename";
-            deleteToolStripMenuItem1.Click += btnRename_Click;
-            // 
-            // backgroundWorker1
-            // 
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             // 
             // tableLayoutPanel2
             // 
@@ -152,7 +81,7 @@ namespace Group15_FileExplorer
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1176, 474);
+            tableLayoutPanel2.Size = new Size(892, 474);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -162,22 +91,21 @@ namespace Group15_FileExplorer
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 91.8552F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.144796F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             tableLayoutPanel1.Controls.Add(btnBack, 0, 0);
             tableLayoutPanel1.Controls.Add(btnForward, 1, 0);
             tableLayoutPanel1.Controls.Add(btnRefresh, 2, 0);
-            tableLayoutPanel1.Controls.Add(txtPath, 3, 0);
-            tableLayoutPanel1.Controls.Add(txtSearch, 5, 0);
-            tableLayoutPanel1.Controls.Add(btnOpen, 4, 0);
+            tableLayoutPanel1.Controls.Add(txtPath, 4, 0);
+            tableLayoutPanel1.Controls.Add(btnOpen, 5, 0);
+            tableLayoutPanel1.Controls.Add(labelPath, 3, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1170, 34);
+            tableLayoutPanel1.Size = new Size(886, 34);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // btnBack
@@ -212,34 +140,34 @@ namespace Group15_FileExplorer
             // 
             // txtPath
             // 
+            txtPath.BackColor = SystemColors.ControlLightLight;
             txtPath.Dock = DockStyle.Fill;
-            txtPath.Location = new Point(123, 3);
+            txtPath.Location = new Point(183, 3);
             txtPath.Name = "txtPath";
-            txtPath.Size = new Size(806, 27);
+            txtPath.ReadOnly = true;
+            txtPath.Size = new Size(620, 27);
             txtPath.TabIndex = 3;
-            txtPath.Text = "Path";
-            txtPath.Enter += txtPath_Enter;
-            txtPath.KeyDown += txtPath_KeyDown;
-            txtPath.Leave += txtPath_Leave;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Dock = DockStyle.Fill;
-            txtSearch.Location = new Point(1007, 3);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(160, 27);
-            txtSearch.TabIndex = 4;
-            txtSearch.Text = "Search";
             // 
             // btnOpen
             // 
-            btnOpen.Location = new Point(935, 3);
+            btnOpen.Dock = DockStyle.Fill;
+            btnOpen.Location = new Point(809, 3);
             btnOpen.Name = "btnOpen";
-            btnOpen.Size = new Size(66, 28);
+            btnOpen.Size = new Size(74, 28);
             btnOpen.TabIndex = 5;
             btnOpen.Text = "Open";
             btnOpen.UseVisualStyleBackColor = true;
             btnOpen.Click += btnOpen_Click;
+            // 
+            // labelPath
+            // 
+            labelPath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            labelPath.AutoSize = true;
+            labelPath.Location = new Point(123, 7);
+            labelPath.Name = "labelPath";
+            labelPath.Size = new Size(54, 20);
+            labelPath.TabIndex = 6;
+            labelPath.Text = "Path:";
             // 
             // splitContainer1
             // 
@@ -250,51 +178,52 @@ namespace Group15_FileExplorer
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(treeView1);
+            splitContainer1.Panel1.Controls.Add(treeView);
             // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(progressBar1);
-            splitContainer1.Panel2.Controls.Add(listView1);
-            splitContainer1.Size = new Size(1170, 428);
-            splitContainer1.SplitterDistance = 328;
+            splitContainer1.Panel2.Controls.Add(listViewApp);
+            splitContainer1.Size = new Size(886, 428);
+            splitContainer1.SplitterDistance = 248;
             splitContainer1.TabIndex = 1;
             // 
-            // treeView1
+            // treeView
             // 
-            treeView1.Dock = DockStyle.Fill;
-            treeView1.Location = new Point(0, 0);
-            treeView1.Name = "treeView1";
-            treeView1.Size = new Size(328, 428);
-            treeView1.TabIndex = 0;
-            treeView1.BeforeExpand += treeView1_BeforeExpand;
-            treeView1.AfterSelect += treeView1_AfterSelect;
+            treeView.Dock = DockStyle.Fill;
+            treeView.Location = new Point(0, 0);
+            treeView.Name = "treeView";
+            treeView.Size = new Size(248, 428);
+            treeView.TabIndex = 0;
+            treeView.BeforeExpand += treeView1_BeforeExpand;
+            treeView.AfterSelect += treeView1_AfterSelect;
             // 
             // progressBar1
             // 
             progressBar1.Dock = DockStyle.Bottom;
             progressBar1.Location = new Point(0, 399);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(838, 29);
+            progressBar1.Size = new Size(634, 29);
             progressBar1.TabIndex = 1;
             progressBar1.Visible = false;
             // 
-            // listView1
+            // listViewApp
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { ColumnHeader0, ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4 });
-            listView1.Dock = DockStyle.Fill;
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(838, 428);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.DoubleClick += listView1_DoubleClick;
-            listView1.MouseClick += listView1_MouseClick;
+            listViewApp.Columns.AddRange(new ColumnHeader[] { columnHeader5, ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4 });
+            listViewApp.Dock = DockStyle.Fill;
+            listViewApp.Location = new Point(0, 0);
+            listViewApp.Name = "listViewApp";
+            listViewApp.Size = new Size(634, 428);
+            listViewApp.TabIndex = 0;
+            listViewApp.UseCompatibleStateImageBehavior = false;
+            listViewApp.View = View.Details;
+            listViewApp.DoubleClick += listviewApp_DoubleClick;
+            listViewApp.MouseClick += listviewApp_MouseClick;
             // 
-            // ColumnHeader0
+            // columnHeader5
             // 
-            ColumnHeader0.Text = "Name";
+            columnHeader5.Text = "Name";
+            columnHeader5.Width = 180;
             // 
             // ColumnHeader1
             // 
@@ -306,6 +235,7 @@ namespace Group15_FileExplorer
             // 
             ColumnHeader2.Text = "Date Modified";
             ColumnHeader2.TextAlign = HorizontalAlignment.Center;
+            ColumnHeader2.Width = 150;
             // 
             // ColumnHeader3
             // 
@@ -321,19 +251,77 @@ namespace Group15_FileExplorer
             // backgroundWorkerDelete
             // 
             backgroundWorkerDelete.DoWork += backgroundWorkerDelete_DoWork;
-            backgroundWorkerDelete.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorkerDelete.RunWorkerCompleted += backgroundWorkerDelete_RunWorkerCompleted;
             // 
-            // Form1
+            // mnuRightClick
+            // 
+            mnuRightClick.ImageScalingSize = new Size(20, 20);
+            mnuRightClick.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem, cutToolStripMenuItem, pasteToolStripMenuItem, toolStripSeparator2, deleteToolStripMenuItem, toolStripSeparator3, renameToolStripMenuItem, newFolderToolStripMenuItem });
+            mnuRightClick.Name = "mnuRightClick";
+            mnuRightClick.Size = new Size(211, 188);
+            // 
+            // copyToolStripMenuItem
+            // 
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.Size = new Size(210, 24);
+            copyToolStripMenuItem.Text = "Copy";
+            copyToolStripMenuItem.Click += btnCopy_Click;
+            // 
+            // cutToolStripMenuItem
+            // 
+            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            cutToolStripMenuItem.Size = new Size(210, 24);
+            cutToolStripMenuItem.Text = "Cut";
+            cutToolStripMenuItem.Click += btnCut_Click;
+            // 
+            // pasteToolStripMenuItem
+            // 
+            pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            pasteToolStripMenuItem.Size = new Size(210, 24);
+            pasteToolStripMenuItem.Text = "Paste";
+            pasteToolStripMenuItem.Click += btnPaste_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(207, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(210, 24);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += btnDelete_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(207, 6);
+            // 
+            // renameToolStripMenuItem
+            // 
+            renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            renameToolStripMenuItem.Size = new Size(210, 24);
+            renameToolStripMenuItem.Text = "Rename";
+            renameToolStripMenuItem.Click += btnRename_Click;
+            // 
+            // newFolderToolStripMenuItem
+            // 
+            newFolderToolStripMenuItem.Name = "newFolderToolStripMenuItem";
+            newFolderToolStripMenuItem.Size = new Size(210, 24);
+            newFolderToolStripMenuItem.Text = "New Folder";
+            newFolderToolStripMenuItem.Click += NewFolderItem_Click;
+            // 
+            // fExplorer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1176, 474);
+            ClientSize = new Size(892, 474);
             Controls.Add(tableLayoutPanel2);
-            Name = "Form1";
+            MinimumSize = new Size(875, 521);
+            Name = "fExplorer";
             Text = "File Explorer";
-            Load += Form1_Load;
-            mnuRightClick.ResumeLayout(false);
+            Load += fExplorer_Load;
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -341,36 +329,40 @@ namespace Group15_FileExplorer
             splitContainer1.Panel2.ResumeLayout(false);
             ((ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            mnuRightClick.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private ContextMenuStrip mnuRightClick;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel1;
         private Button btnBack;
         private Button btnForward;
         private Button btnRefresh;
         private TextBox txtPath;
-        private TextBox txtSearch;
         private SplitContainer splitContainer1;
-        private TreeView treeView1;
-        private ListView listView1;
+        private TreeView treeView;
         private ProgressBar progressBar1;
-        private ColumnHeader ColumnHeader0;
+
+        private Button btnOpen;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerDelete;
+        private Label labelPath;
+        private FolderBrowserDialog folderBrowserDialog;
+        private ListView listViewApp;
+        private ColumnHeader columnHeader5;
         private ColumnHeader ColumnHeader1;
         private ColumnHeader ColumnHeader2;
         private ColumnHeader ColumnHeader3;
-        private ToolStripMenuItem copyToolStripMenuItem1;
-        private ToolStripMenuItem cutToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem deleteToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem2;
-        private Button btnOpen;
         private ColumnHeader ColumnHeader4;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerDelete;
+        private ContextMenuStrip mnuRightClick;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem cutToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem renameToolStripMenuItem;
+        private ToolStripMenuItem newFolderToolStripMenuItem;
     }
 }

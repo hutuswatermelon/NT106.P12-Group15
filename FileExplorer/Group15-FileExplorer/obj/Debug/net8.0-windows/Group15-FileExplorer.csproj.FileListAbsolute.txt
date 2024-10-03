@@ -3,7 +3,6 @@ D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\bin\Debug\net8.0-windows\Gr
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\bin\Debug\net8.0-windows\Group15-FileExplorer.runtimeconfig.json
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\bin\Debug\net8.0-windows\Group15-FileExplorer.dll
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\bin\Debug\net8.0-windows\Group15-FileExplorer.pdb
-D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15_FileExplorer.Form1.resources
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15-FileExplorer.csproj.GenerateResource.cache
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15-FileExplorer.GeneratedMSBuildEditorConfig.editorconfig
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15-FileExplorer.AssemblyInfoInputs.cache
@@ -15,3 +14,5 @@ D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Gr
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15-FileExplorer.genruntimeconfig.cache
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\ref\Group15-FileExplorer.dll
 D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15_FileExplorer.Properties.Resources.resources
+D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15-FileExplorer.sourcelink.json
+D:\WinForm\Group15-FileExplorer\Group15-FileExplorer\obj\Debug\net8.0-windows\Group15_FileExplorer.fExplorer.resources
