@@ -1,0 +1,17 @@
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\bin\Debug\net8.0-windows\TCPChatServer-SendFile.exe
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\bin\Debug\net8.0-windows\TCPChatServer-SendFile.deps.json
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\bin\Debug\net8.0-windows\TCPChatServer-SendFile.runtimeconfig.json
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\bin\Debug\net8.0-windows\TCPChatServer-SendFile.dll
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\bin\Debug\net8.0-windows\TCPChatServer-SendFile.pdb
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer_SendFile.ServerForm.resources
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.csproj.GenerateResource.cache
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.GeneratedMSBuildEditorConfig.editorconfig
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.AssemblyInfoInputs.cache
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.AssemblyInfo.cs
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.csproj.CoreCompileInputs.cache
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.sourcelink.json
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.dll
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\refint\TCPChatServer-SendFile.dll
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.pdb
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\TCPChatServer-SendFile.genruntimeconfig.cache
+D:\WinForm\TCPChatServer-SendFile\TCPChatServer-SendFile\obj\Debug\net8.0-windows\ref\TCPChatServer-SendFile.dll

@@ -1,0 +1,17 @@
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.ClientForm.resources
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.csproj.GenerateResource.cache
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.GeneratedMSBuildEditorConfig.editorconfig
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.AssemblyInfoInputs.cache
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.AssemblyInfo.cs
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.csproj.CoreCompileInputs.cache
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.sourcelink.json
+D:\WinForm\TCPChatServer-SendFile\ClientChat\bin\Debug\net8.0-windows\ClientChat.exe
+D:\WinForm\TCPChatServer-SendFile\ClientChat\bin\Debug\net8.0-windows\ClientChat.deps.json
+D:\WinForm\TCPChatServer-SendFile\ClientChat\bin\Debug\net8.0-windows\ClientChat.runtimeconfig.json
+D:\WinForm\TCPChatServer-SendFile\ClientChat\bin\Debug\net8.0-windows\ClientChat.dll
+D:\WinForm\TCPChatServer-SendFile\ClientChat\bin\Debug\net8.0-windows\ClientChat.pdb
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.dll
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\refint\ClientChat.dll
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.pdb
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ClientChat.genruntimeconfig.cache
+D:\WinForm\TCPChatServer-SendFile\ClientChat\obj\Debug\net8.0-windows\ref\ClientChat.dll

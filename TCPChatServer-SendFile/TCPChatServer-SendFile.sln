@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCPChatServer-SendFile", "TCPChatServer-SendFile\TCPChatServer-SendFile.csproj", "{BD79D629-6BC0-4A1F-BF8E-B87EBEF91394}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientChat", "ClientChat\ClientChat.csproj", "{AA1FA537-017B-4B47-B3D3-825659CED340}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD79D629-6BC0-4A1F-BF8E-B87EBEF91394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD79D629-6BC0-4A1F-BF8E-B87EBEF91394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD79D629-6BC0-4A1F-BF8E-B87EBEF91394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD79D629-6BC0-4A1F-BF8E-B87EBEF91394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1FA537-017B-4B47-B3D3-825659CED340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1FA537-017B-4B47-B3D3-825659CED340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1FA537-017B-4B47-B3D3-825659CED340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1FA537-017B-4B47-B3D3-825659CED340}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7A025A9-307A-4A34-94EB-486A95E88B18}
+	EndGlobalSection
+EndGlobal
