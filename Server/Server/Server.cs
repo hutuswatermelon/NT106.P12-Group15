@@ -3,9 +3,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Xml;
-//using System.Net.NetworkInformation;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace frmServer
 {
@@ -22,9 +23,6 @@ namespace frmServer
         RoomList lstRoom = new RoomList();
         UserList lstUser = new UserList();
         List<Socket> Client = new List<Socket>();
-
-        private bool isServerRunning = false; // Kiểm tra trạng thái server
-
         public frmServer()
         {
             InitializeComponent();
@@ -53,7 +51,6 @@ namespace frmServer
         }
         private void startServer()
         {
-            if (isServerRunning) return; // Kiểm tra nếu server đang chạy
             EndPoint ipep = new IPEndPoint(IPAddress.Any, 8000);    // khai báo ip và port
 
 
@@ -65,7 +62,6 @@ namespace frmServer
             server.Listen(10);
             server.BeginAccept(new AsyncCallback(beginAccept), server); // định nghĩa delegate đx dùng khi có kết nối tới. truyền tham số beginAccept vào
             updateUi("Đang lắng nghe các kết nối...");
-            isServerRunning = true;
             //StartUDPBroadcast();
         }
 
@@ -87,12 +83,10 @@ namespace frmServer
         Socket socket_send;
         private void beginAccept(IAsyncResult ar)  // iasyncResult truyền giá trị bất đồng bộ từ BeginAccept đến EndAccept
         {
-            if (server == null || !server.IsBound) return;
             // ar chứ
             Socket s = (Socket)ar.AsyncState; // nhận socket ban đầu của Server . ép kiểu đối tượng qua soket
             client = s.EndAccept(ar);   // trả về socket dùng để kết nối với client trong nhận gửi data
             updateUi("Đã kết nối với " + client.RemoteEndPoint.ToString());
-
 
 
             // đăng ký nhận dữ liệu
@@ -338,14 +332,18 @@ namespace frmServer
             string user_client = "";
             string pass_client = "";
 
-            for (int i = 8; i < str.Length; i++) //tại sao i = 8
+            // Đảm bảo độ dài chuỗi hợp lệ trước khi truy cập
+            if (str.Length > 8)
             {
-                if (str[i] == ' ')
+                for (int i = 8; i < str.Length; i++)
                 {
-                    pass_client = str.Substring(i + 1);
-                    break;
+                    if (str[i] == ' ')
+                    {
+                        pass_client = str.Substring(i + 1);
+                        break;
+                    }
+                    user_client += str[i];
                 }
-                user_client += str[i];
             }
 
             bool checkLogIn = false;
@@ -359,56 +357,59 @@ namespace frmServer
                 }
             }
 
-            if (checkStt == false)
+            if (!checkStt)
             {
-                XmlDocument docXML = new XmlDocument();
-                docXML.Load("ACCOUNT.xml");
-
-                XmlNode user = docXML.SelectSingleNode("//account");
-                XmlNodeList userList = user.SelectNodes("//user");
-
-                foreach (XmlNode node in userList)
+                XmlReaderSettings settings = new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit };
+                using (XmlReader reader = XmlReader.Create("ACCOUNT.xml", settings))
                 {
-                    if (node.Attributes != null)
+                    XmlDocument docXML = new XmlDocument();
+                    docXML.Load(reader);
+
+                    XmlNodeList userList = docXML.SelectNodes("//user");
+                    foreach (XmlNode node in userList)
                     {
-                        if (node.Attributes["id"].Value == user_client)
+                        if (node.Attributes?["id"]?.Value == user_client)
                         {
-                            if (node.InnerText == pass_client)
+                            if (node.InnerText ==   HashPassword(pass_client))
                             {
                                 updateUi(user_client + " đã online");
                                 User us = new User(user_client, sk);
                                 lstUser.addPlayer(us);
-                                buffSend = new byte[1024];
                                 buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTC");
                                 sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
-                                Thread.Sleep(200);
-                                string s = "#_TCP_UF";
-                                for (int i = 0; i < 10; i++)
-                                {
-                                    s += lstRoom.ListRoom[i].playerCount().ToString();
-                                }
-                                sendData(s, sk);
-                                addListView(us);
                                 checkLogIn = true;
                                 break;
                             }
                         }
                     }
                 }
-                if (checkLogIn == false)
+                if (!checkLogIn)
                 {
-                    buffSend = new byte[1024];
                     buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTB");
                     sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
                 }
             }
             else
             {
-                buffSend = new byte[1024];
                 buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTT");
                 sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
             }
         }
+
+        public static string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // chuyển byte sang chuỗi thập lục phân
+                }
+                return builder.ToString();
+            }
+        }
+
 
         public void Check_SignUp(string str, Socket sk)
         {
@@ -491,51 +492,10 @@ namespace frmServer
             startServer();
             timer2.Start();
         }
-        private void CloseServer()
-        {
-            if (!isServerRunning) return; // Nếu server chưa chạy, không làm gì
-
-            try
-            {
-                // Ngừng chấp nhận kết nối mới
-                if (server != null)
-                {
-                    server.Close();
-                    server = null;
-                    updateUi("Server đã được đóng.");
-                }
-
-                // Đóng các kết nối client đang hoạt động
-                foreach (var clientSocket in Client)
-                {
-                    if (clientSocket != null && clientSocket.Connected)
-                    {
-                        try
-                        {
-                            clientSocket.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Ghi lại thông báo lỗi (có thể hiển thị cho người dùng nếu cần)
-                            MessageBox.Show("Lỗi khi đóng kết nối client: " + ex.Message);
-                        }
-                    }
-                }
-
-                // Xóa danh sách client
-                Client.Clear();
-            }
-            catch (Exception ex)
-            {
-                // Ghi lại thông báo lỗi khi đóng server
-                Console.WriteLine("Lỗi khi đóng server: " + ex.Message);
-            }
-        }
 
         private void btnCloseServer_Click(object sender, EventArgs e)
         {
-            lstAccount.Items.Clear();
-            CloseServer();
+            
             timer2.Stop();
         }
 
