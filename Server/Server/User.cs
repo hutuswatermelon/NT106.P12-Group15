@@ -11,7 +11,10 @@ namespace frmServer
     {
         //Tên người chơi
         string userName;
-
+        // Danh sách các câu viết của user trong câu chuyện
+        public List<string> Story { get; set; } = new List<string>();
+        // Trạng thái kiểm tra xem user đã submit câu trong vòng hiện tại hay chưa
+        public bool HasSubmitted { get; set; } = false;
         public string UserName
         {
             get { return userName; }
@@ -31,8 +34,14 @@ namespace frmServer
             get { return inRoom; }
             set { inRoom = value; }
         }
-        int roomNumber; // mã số phòng
+        bool isMaster; // trạng thái chủ phòng
+        public bool IsMaster
+        {
+            get { return isMaster; }
+            set { isMaster = value; }
+        }
 
+        int roomNumber; // mã số phòng
         public int RoomNumber
         {
             get { return roomNumber; }
@@ -47,14 +56,6 @@ namespace frmServer
             set { statusConnect = value; }
         }
 
-        int luotDi;
-
-        public int LuotDi
-        {
-            get { return luotDi; }
-            set { luotDi = value; }
-        }
-
         public User(string us, Socket s)
         {
             this.userName = us;
@@ -62,6 +63,7 @@ namespace frmServer
             this.inRoom = false;
             this.roomNumber = 0;
             this.statusConnect = true;
+            this.isMaster = false;
         }
     }
 }

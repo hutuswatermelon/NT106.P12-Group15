@@ -18,7 +18,7 @@ namespace frmServer
 
         public bool addPlayer(User us)
         {
-            if (listPlayer.Count <= 2)
+            if (listPlayer.Count < 80)
             {
                 listPlayer.Add(us);
                 return true;

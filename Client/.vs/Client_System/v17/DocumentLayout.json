@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WinForm\\Client\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\client\\client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\Client\\client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\Client\\client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReceivedCommand.cs",
+              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\ReceivedCommand.cs",
+              "RelativeDocumentMoniker": "Client_System\\ReceivedCommand.cs",
+              "ToolTip": "D:\\WinForm\\Client\\Client_System\\ReceivedCommand.cs",
+              "RelativeToolTip": "Client_System\\ReceivedCommand.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T18:02:53.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SocketManager.cs",
+              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\SocketManager.cs",
+              "RelativeDocumentMoniker": "Client_System\\SocketManager.cs",
+              "ToolTip": "D:\\WinForm\\Client\\Client_System\\SocketManager.cs",
+              "RelativeToolTip": "Client_System\\SocketManager.cs",
+              "ViewState": "AQIAAKsAAAAAAAAAAAAMwLQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T18:02:51.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmStart.cs [Design]",
+              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\frmStart.cs",
+              "RelativeDocumentMoniker": "Client_System\\frmStart.cs",
+              "ToolTip": "D:\\WinForm\\Client_System\\Client_System\\frmStart.cs [Design]",
+              "RelativeToolTip": "..\\Client_System\\Client_System\\frmStart.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T17:53:22.994Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

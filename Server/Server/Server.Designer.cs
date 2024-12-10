@@ -34,11 +34,11 @@
             btnListen = new Button();
             btnCloseServer = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            txtMessage = new TextBox();
             btnSendMsgfromServer = new Button();
             txtIPServer = new TextBox();
             lblRCV = new Label();
             lblReceiver = new Label();
+            txtMessage = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
@@ -49,12 +49,10 @@
             tableLayoutPanel1.SetColumnSpan(lstLog, 4);
             lstLog.Dock = DockStyle.Fill;
             lstLog.FormattingEnabled = true;
-            lstLog.ItemHeight = 25;
-            lstLog.Location = new Point(540, 29);
-            lstLog.Margin = new Padding(4, 4, 4, 4);
+            lstLog.Location = new Point(433, 23);
             lstLog.Name = "lstLog";
             tableLayoutPanel1.SetRowSpan(lstLog, 2);
-            lstLog.Size = new Size(427, 416);
+            lstLog.Size = new Size(343, 334);
             lstLog.TabIndex = 0;
             // 
             // lstAccount
@@ -63,10 +61,9 @@
             lstAccount.Dock = DockStyle.Fill;
             lstAccount.FullRowSelect = true;
             lstAccount.GridLines = true;
-            lstAccount.Location = new Point(29, 67);
-            lstAccount.Margin = new Padding(4, 4, 4, 4);
+            lstAccount.Location = new Point(23, 53);
             lstAccount.Name = "lstAccount";
-            lstAccount.Size = new Size(428, 378);
+            lstAccount.Size = new Size(344, 304);
             lstAccount.TabIndex = 5;
             lstAccount.UseCompatibleStateImageBehavior = false;
             lstAccount.View = View.Details;
@@ -75,83 +72,76 @@
             // btnListen
             // 
             btnListen.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnListen.Location = new Point(29, 491);
-            btnListen.Margin = new Padding(4, 4, 4, 4);
+            btnListen.BackColor = Color.White;
+            btnListen.FlatStyle = FlatStyle.Flat;
+            btnListen.Location = new Point(23, 393);
             btnListen.Name = "btnListen";
-            btnListen.Size = new Size(185, 42);
+            btnListen.Size = new Size(149, 34);
             btnListen.TabIndex = 6;
             btnListen.Text = "Mở Server";
-            btnListen.UseVisualStyleBackColor = true;
+            btnListen.UseVisualStyleBackColor = false;
             btnListen.Click += btnListen_Click;
             // 
             // btnCloseServer
             // 
             btnCloseServer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnCloseServer.Location = new Point(272, 491);
-            btnCloseServer.Margin = new Padding(4, 4, 4, 4);
+            btnCloseServer.BackColor = Color.White;
+            btnCloseServer.FlatStyle = FlatStyle.Flat;
+            btnCloseServer.Location = new Point(218, 393);
             btnCloseServer.Name = "btnCloseServer";
-            btnCloseServer.Size = new Size(185, 42);
+            btnCloseServer.Size = new Size(149, 34);
             btnCloseServer.TabIndex = 6;
             btnCloseServer.Text = "Đóng Server";
-            btnCloseServer.UseVisualStyleBackColor = true;
+            btnCloseServer.UseVisualStyleBackColor = false;
             btnCloseServer.Click += btnCloseServer_Click;
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = SystemColors.GradientInactiveCaption;
             tableLayoutPanel1.ColumnCount = 10;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 26F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(btnCloseServer, 3, 4);
             tableLayoutPanel1.Controls.Add(lstLog, 5, 1);
             tableLayoutPanel1.Controls.Add(btnListen, 1, 4);
             tableLayoutPanel1.Controls.Add(lstAccount, 1, 2);
-            tableLayoutPanel1.Controls.Add(txtMessage, 5, 4);
             tableLayoutPanel1.Controls.Add(btnSendMsgfromServer, 8, 4);
             tableLayoutPanel1.Controls.Add(txtIPServer, 1, 1);
             tableLayoutPanel1.Controls.Add(lblRCV, 5, 3);
             tableLayoutPanel1.Controls.Add(lblReceiver, 6, 3);
+            tableLayoutPanel1.Controls.Add(txtMessage, 5, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(4, 4, 4, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 6;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanel1.Size = new Size(1000, 562);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 7;
-            // 
-            // txtMessage
-            // 
-            txtMessage.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(txtMessage, 3);
-            txtMessage.Location = new Point(540, 496);
-            txtMessage.Margin = new Padding(4, 4, 4, 4);
-            txtMessage.Name = "txtMessage";
-            txtMessage.Size = new Size(331, 31);
-            txtMessage.TabIndex = 7;
             // 
             // btnSendMsgfromServer
             // 
             btnSendMsgfromServer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnSendMsgfromServer.Location = new Point(879, 494);
-            btnSendMsgfromServer.Margin = new Padding(4, 4, 4, 4);
+            btnSendMsgfromServer.BackColor = Color.White;
+            btnSendMsgfromServer.FlatStyle = FlatStyle.Flat;
+            btnSendMsgfromServer.Location = new Point(705, 395);
             btnSendMsgfromServer.Name = "btnSendMsgfromServer";
-            btnSendMsgfromServer.Size = new Size(88, 36);
+            btnSendMsgfromServer.Size = new Size(71, 29);
             btnSendMsgfromServer.TabIndex = 8;
             btnSendMsgfromServer.Text = "Send";
-            btnSendMsgfromServer.UseVisualStyleBackColor = true;
+            btnSendMsgfromServer.UseVisualStyleBackColor = false;
             btnSendMsgfromServer.Click += btnSendMsgfromServer_Click;
             // 
             // txtIPServer
@@ -159,21 +149,19 @@
             txtIPServer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtIPServer.BackColor = SystemColors.Window;
             tableLayoutPanel1.SetColumnSpan(txtIPServer, 3);
-            txtIPServer.Location = new Point(29, 29);
-            txtIPServer.Margin = new Padding(4, 4, 4, 4);
+            txtIPServer.Location = new Point(23, 23);
             txtIPServer.Name = "txtIPServer";
             txtIPServer.ReadOnly = true;
-            txtIPServer.Size = new Size(428, 31);
+            txtIPServer.Size = new Size(344, 27);
             txtIPServer.TabIndex = 9;
             // 
             // lblRCV
             // 
             lblRCV.Anchor = AnchorStyles.Left;
             lblRCV.AutoSize = true;
-            lblRCV.Location = new Point(540, 455);
-            lblRCV.Margin = new Padding(4, 0, 4, 0);
+            lblRCV.Location = new Point(433, 365);
             lblRCV.Name = "lblRCV";
-            lblRCV.Size = new Size(110, 25);
+            lblRCV.Size = new Size(90, 20);
             lblRCV.TabIndex = 10;
             lblRCV.Text = "Người nhận:";
             // 
@@ -182,22 +170,35 @@
             lblReceiver.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblReceiver.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(lblReceiver, 3);
-            lblReceiver.Location = new Point(733, 455);
-            lblReceiver.Margin = new Padding(4, 0, 4, 0);
+            lblReceiver.Location = new Point(588, 365);
             lblReceiver.Name = "lblReceiver";
-            lblReceiver.Size = new Size(234, 25);
+            lblReceiver.Size = new Size(188, 20);
             lblReceiver.TabIndex = 10;
             lblReceiver.Text = "Chọn 1 Tài khoản Online";
             // 
+            // txtMessage
+            // 
+            txtMessage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(txtMessage, 3);
+            txtMessage.Location = new Point(433, 393);
+            txtMessage.Multiline = true;
+            txtMessage.Name = "txtMessage";
+            txtMessage.Size = new Size(266, 34);
+            txtMessage.TabIndex = 7;
+            // 
+            // timer2
+            // 
+            timer2.Tick += timer2_Tick;
+            // 
             // frmServer
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 562);
+            ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "frmServer";
             Text = "Server";
+            FormClosing += frmServer_FormClosing;
             Load += frmServer_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

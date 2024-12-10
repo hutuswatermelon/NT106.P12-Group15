@@ -3,10 +3,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Xml;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Linq.Expressions;
+using System.Timers;
 
 namespace frmServer
 {
@@ -23,6 +24,10 @@ namespace frmServer
         RoomList lstRoom = new RoomList();
         UserList lstUser = new UserList();
         List<Socket> Client = new List<Socket>();
+        Dictionary<int, System.Timers.Timer> roomTimers = new Dictionary<int, System.Timers.Timer>();
+
+        private bool isServerRunning = false; // Kiểm tra trạng thái server
+
         public frmServer()
         {
             InitializeComponent();
@@ -51,25 +56,21 @@ namespace frmServer
         }
         private void startServer()
         {
+            if (isServerRunning) return; // Kiểm tra nếu server đang chạy
             EndPoint ipep = new IPEndPoint(IPAddress.Any, 8000);    // khai báo ip và port
-
-
-            //IPAddress ipAddress = getIP();
-            //IPEndPoint ipEndPoint = new IPEndPoint(ipAddress, 9050);
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); // tạo 1 đối tượng socket
             server.Bind(ipep);      // gán socket với địa chỉ ip và port
             server.Listen(10);
             server.BeginAccept(new AsyncCallback(beginAccept), server); // định nghĩa delegate đx dùng khi có kết nối tới. truyền tham số beginAccept vào
             updateUi("Đang lắng nghe các kết nối...");
-            //StartUDPBroadcast();
+            isServerRunning = true;
         }
 
         // send data  
         private void sendText(IAsyncResult iar)
         {
             Socket s = (Socket)iar.AsyncState;
-            //socket_send.EndSend(iar);
             s.EndSend(iar);
         }
         private void sendData(string data, Socket sk)
@@ -77,24 +78,21 @@ namespace frmServer
             buffSend = new byte[1024];
             buffSend = Encoding.UTF8.GetBytes(data);
             sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
-            //updateUi("Server: " + txtSend.Text);
         }
 
-        Socket socket_send;
         private void beginAccept(IAsyncResult ar)  // iasyncResult truyền giá trị bất đồng bộ từ BeginAccept đến EndAccept
         {
+            if (server == null || !server.IsBound) return;
             // ar chứ
             Socket s = (Socket)ar.AsyncState; // nhận socket ban đầu của Server . ép kiểu đối tượng qua soket
             client = s.EndAccept(ar);   // trả về socket dùng để kết nối với client trong nhận gửi data
             updateUi("Đã kết nối với " + client.RemoteEndPoint.ToString());
 
-
             // đăng ký nhận dữ liệu
             client.BeginReceive(buffReceive, 0, buffReceive.Length, SocketFlags.None, new AsyncCallback(beginReceive), client);
             Client.Add(client);
-            socket_send = client;
 
-            EndPoint ipep = new IPEndPoint(IPAddress.Any, 9050);    // khai báo ip và port
+            EndPoint ipep = new IPEndPoint(IPAddress.Any, 8000);    // khai báo ip và port
             server.BeginAccept(new AsyncCallback(beginAccept), server);
         }
 
@@ -108,7 +106,44 @@ namespace frmServer
                 bytesReceive = s.EndReceive(ia);
                 string receive = Encoding.UTF8.GetString(buffReceive, 0, bytesReceive);
                 string str = receive;
+                if (receive.StartsWith("YOUR_API_KEY"))
+                {
 
+
+                    string[] parts = receive.Split('|');
+                    if (parts.Length < 2)
+                    {
+                        updateUi("Định dạng thông điệp không hợp lệ.");
+                        s.Close();
+                        return;
+                    }
+
+                    // Lấy APIKey HMAC từ chuỗi nhận được
+                    string clientHMAC = parts[2];
+                    string apiKey = "YOUR_API_KEY";  // APIKey thực tế của bạn
+                    string secret = "YOUR_SECRET_KEY";  // Secret thực tế của bạn
+
+                    // Xác thực HMAC
+                    if (ValidateHMAC(clientHMAC, apiKey, secret))
+                    {
+                        updateUi("HMAC hợp lệ, kết nối client thành công!");
+
+                        // Gửi lệnh xác thực thành công về client
+                        sendData("#_APIKeyValidated",s); // Lệnh này sẽ bật nút btnSignin và btnSignup ở client
+                                                              // Cho phép client tiếp tục gửi các lệnh khác
+                        s.BeginReceive(buffReceive, 0, buffReceive.Length, SocketFlags.None, new AsyncCallback(beginReceive), s);
+                        updateUi("Đã gửi #_APIKeyValidated đến client.");
+
+
+                    }
+                    else
+                    {
+                        updateUi("HMAC không hợp lệ, ngắt kết nối!");
+                        s.Close();
+                        return;
+                    }
+
+                }
                 if (receive == "exit")
                 {
                     s.Close();
@@ -144,129 +179,287 @@ namespace frmServer
                                 if (us._Socket.RemoteEndPoint.ToString() == s.RemoteEndPoint.ToString())
                                 {
                                     int _nr = (int.Parse(receive[8].ToString()) + 1);
-                                    if (lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer.Count() >= 2)
+                                    int roomID = int.Parse(receive[8].ToString());
+                                    if (lstRoom.ListRoom[roomID].ListPlayer.Count() >= lstRoom.ListRoom[roomID].MaxPlayers)
                                     {
-                                        sendData("#_TCP_FULL", s);
+                                        
                                     }
                                     else
                                     {
-                                        lstRoom.ListRoom[int.Parse(receive[8].ToString())].addPlayer(us);
+                                        lstRoom.ListRoom[roomID].addPlayer(us);
                                         us.RoomNumber = _nr;
                                         updateListView(us);
                                         updateUi(us.UserName + " đã vào phòng " + _nr.ToString());
-                                        if (lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer.Count() == 2)
+                                        if (lstRoom.ListRoom[roomID].ListPlayer.Count() == 1)
                                         {
-                                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].LuotDi = 1;
-                                            sendData("#_TCP_LD1" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].UserName.ToString(), lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0]._Socket);
-                                            updateUi("Room" + receive[8].ToString() + "_" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].UserName.ToString() + " có lượt đi " + (1).ToString());
-                                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].LuotDi = 2;
-                                            sendData("#_TCP_LD2" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].UserName.ToString(), lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1]._Socket);
-                                            updateUi("Room" + receive[8].ToString() + "_" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].UserName.ToString() + " có lượt đi " + (2).ToString());
+                                            us.IsMaster = true;
+                                            sendData("#_TCP_BM_R" + _nr.ToString() + "_" + us.UserName, s);
+                                        }
+                                        us.InRoom = true;
+
+                                        int timeIndex = 1;
+                                        int roundIndex = 1;
+                                        int timelimit = lstRoom.ListRoom[roomID].StoryTimeLimit;
+                                        int maxRounds = lstRoom.ListRoom[roomID].MaxRounds;
+                                        updateUi(roomID + " " + timelimit.ToString() + " " + maxRounds.ToString());
+                                        switch (lstRoom.ListRoom[roomID].StoryTimeLimit)
+                                        {
+                                            case 10:
+                                                timeIndex = 0;
+                                                break;
+                                            case 15:
+                                                timeIndex = 1;
+                                                break;
+                                            case 30:
+                                                timeIndex = 2;
+                                                break;
+                                            case 60:
+                                                timeIndex = 3;
+                                                break;
+                                            default:
+                                                break;
                                         }
 
-                                        us.InRoom = true;
+                                        if (maxRounds == lstRoom.ListRoom[roomID].playerCount() + 1)
+                                            roundIndex = 0;
+                                        else if (maxRounds == lstRoom.ListRoom[roomID].playerCount() + 2)
+                                            roundIndex = 1;
+                                        else
+                                        {
+                                            switch(maxRounds)
+                                            {
+                                                case 4:
+                                                    roundIndex = 2;
+                                                    break;
+                                                case 5:
+                                                    roundIndex = 3;
+                                                    break;
+                                                case 6:
+                                                    roundIndex = 4;
+                                                    break;
+                                                case 7:
+                                                    roundIndex = 5;
+                                                    break;
+                                                case 8:
+                                                    roundIndex = 6;
+                                                    break;
+                                                case 9:
+                                                    roundIndex = 7;
+                                                    break;
+                                                case 10:
+                                                    roundIndex = 8;
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                        updateUi(roundIndex.ToString() + " " + timeIndex.ToString());
+       
+
+                                        for (int i = 0; i < lstRoom.ListRoom[roomID].playerCount(); i++)
+                                        {
+                                            User _us = lstRoom.ListRoom[roomID].ListPlayer[i];
+
+                                            Thread.Sleep(200);
+
+                                            // Cập nhật danh sách tên người chơi trong phòng
+                                            string msg2 = "#_TCP_UP" + receive[8].ToString() + lstRoom.ListRoom[roomID].playerCount()
+                                                + lstRoom.ListRoom[roomID].MaxPlayers;
+                                            // Lấy danh sách tên người chơi
+                                            var playerNames = lstRoom.ListRoom[roomID].ListPlayer.Select(p => p.UserName);
+                                            msg2 += string.Join(" ", playerNames); // Sử dụng Join để tạo chuỗi tên người chơi
+                                            sendData(msg2, _us._Socket);
+                                        }
                                         foreach (User _us in lstUser.ListPlayer)
                                         {
-                                            sendData("#_TCP_UD" + receive[8].ToString() + lstRoom.ListRoom[int.Parse(receive[8].ToString())].playerCount(), _us._Socket);
+                                            Thread.Sleep(200);
+                                            string msg1 = "#_TCP_UL" + receive[8].ToString() + lstRoom.ListRoom[roomID].playerCount();
+                                            sendData(msg1, _us._Socket);
+                                            Thread.Sleep(200);
+                                            
+                                            //MessageBox.Show(msg2);
                                         }
+                                        string msg = "#_TCP_US" + lstRoom.ListRoom[roomID].RoomNumber + timeIndex + roundIndex;
+                                        sendData(msg, us._Socket);
                                     }
                                     break;
                                 }
+                            }
+                        }
+                        if (receive.Substring(0, 8) == "#_TCP_MP") //Max player in room
+                        {
+                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].MaxPlayers = int.Parse(receive[9].ToString());
+                            foreach (User _us in lstUser.ListPlayer)
+                            {
+                                sendData("#_TCP_MP" + receive[8].ToString() + lstRoom.ListRoom[int.Parse(receive[8].ToString())].MaxPlayers, _us._Socket);
                             }
                         }
                         if (receive.Substring(0, 8) == "#_TCP_OR")
                         {
+                            int roomID = int.Parse(receive[8].ToString());
                             foreach (User us in lstUser.ListPlayer)
                             {
                                 if (us._Socket.RemoteEndPoint.ToString() == s.RemoteEndPoint.ToString())
                                 {
-                                    int _nr = (int.Parse(receive[8].ToString()) + 1);
-                                    updateUi(us.UserName + " đã rời phòng " + _nr.ToString());
+                                    int roomNumber = us.RoomNumber;
+                                    if (us.IsMaster)
+                                    {
+                                        updateUi($"Quản trò phòng {roomNumber} đã rời.");
+                                        HandleMasterExit(s, roomNumber);
+                                    }
+                                    
+                                    updateUi(us.UserName + " đã rời phòng " + roomNumber.ToString());
                                     us.RoomNumber = 0;
-                                    updateListView(us);
+                                    us.IsMaster = false;
                                     us.InRoom = false;
-                                    lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer.Remove(us);
+                                    updateListView(us);
+                                    lstRoom.ListRoom[roomID].ListPlayer.Remove(us);
                                     foreach (User _us in lstUser.ListPlayer)
                                     {
-                                        sendData("#_TCP_UD" + receive[8].ToString() + lstRoom.ListRoom[int.Parse(receive[8].ToString())].playerCount(), _us._Socket);
+                                        sendData("#_TCP_UL" + roomID + lstRoom.ListRoom[roomID].playerCount(), _us._Socket);
+                                        Thread.Sleep(200);    
+                                        // Cập nhật danh sách tên người chơi trong phòng
+                                        string msg2 = "#_TCP_UP" + roomID + lstRoom.ListRoom[roomID].playerCount()
+                                            + lstRoom.ListRoom[roomID].MaxPlayers;
+
+                                        // Lấy danh sách tên người chơi
+                                        var playerNames = lstRoom.ListRoom[roomID].ListPlayer.Select(p => p.UserName);
+                                        msg2 += string.Join(" ", playerNames); // Sử dụng Join để tạo chuỗi tên người chơi
+                                        sendData(msg2, _us._Socket);
                                     }
                                     break;
                                 }
                             }
-                        }
-                        if (receive.Substring(0, 8) == "#_TCP_DO")
-                        {
-                            Random rd = new Random();
-                            int number = rd.Next(1, 7);
 
-                            if (lstRoom.ListRoom[int.Parse(receive[9].ToString())].GiaTriXNTruoc == 0)
+                            if (lstRoom.ListRoom[roomID].ListPlayer.Count == 0)
                             {
-                                if (number == 1 || number == 6)
+                                string msg = "#_TCP_ER" + roomID;
+                                foreach (User _us in lstUser.ListPlayer)
                                 {
-                                    foreach (User us in lstRoom.ListRoom[int.Parse(receive[9].ToString())].ListPlayer)
-                                    {
-                                        sendData("#_TCP_VA" + receive[8].ToString() + number.ToString(), us._Socket);
-                                    }
+                                    sendData(msg, _us._Socket);
                                 }
-                                else
-                                {
-                                    foreach (User us in lstRoom.ListRoom[int.Parse(receive[9].ToString())].ListPlayer)
-                                    {
-                                        //int ld = doiLuotDi(int.Parse(receive[8].ToString()));
-                                        //sendData("#_TCP_VA" + ld.ToString() + number.ToString(), us._Socket);
-                                    }
-                                }
-                                lstRoom.ListRoom[int.Parse(receive[9].ToString())].GiaTriXNTruoc = number;
+                                Room room = lstRoom.ListRoom[roomID];
+                                room.ResetRoom();   
+                            }
+                        }
+                        if (receive.Substring(0, 8) == "#_TCP_US")
+                        {
+                            int roomID = int.Parse(receive[8].ToString());
+                            int timelimit = int.Parse(receive[9].ToString());
+                            int maxRound = int.Parse(receive[10].ToString());
+                            switch (timelimit)
+                            {
+                                case 0:
+                                    lstRoom.ListRoom[roomID].StoryTimeLimit = 10;
+                                    break;
+                                case 1:
+                                    lstRoom.ListRoom[roomID].StoryTimeLimit = 15;
+                                    break;
+                                case 2:
+                                    lstRoom.ListRoom[roomID].StoryTimeLimit = 30;
+                                    break;
+                                case 3:
+                                    lstRoom.ListRoom[roomID].StoryTimeLimit = 60;
+                                    break;
+                                default:
+                                    break;
+
+                            }
+                            
+                            if (maxRound == 0)
+                            {
+                                lstRoom.ListRoom[roomID].MaxRounds = lstRoom.ListRoom[roomID].playerCount();
+                            }
+
+                            else if (maxRound == 1)
+                            {
+                                lstRoom.ListRoom[roomID].MaxRounds = lstRoom.ListRoom[roomID].playerCount() + 1;
                             }
                             else
                             {
-                                if (number == 1 || number == 6)
+                                switch (maxRound)
                                 {
-                                    foreach (User us in lstRoom.ListRoom[int.Parse(receive[9].ToString())].ListPlayer)
-                                    {
-                                        sendData("#_TCP_VA" + receive[8].ToString() + number.ToString(), us._Socket);
-                                    }
-                                }
-                                else
-                                {
-                                    foreach (User us in lstRoom.ListRoom[int.Parse(receive[9].ToString())].ListPlayer)
-                                    {
-                                        //int ld = doiLuotDi(int.Parse(receive[8].ToString()));
-                                        //sendData("#_TCP_VA" + ld.ToString() + number.ToString(), us._Socket);
-                                    }
+                                    case 2:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 4;
+                                        break;
+                                    case 3:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 5;
+                                        break;
+                                    case 4:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 6;
+                                        break;
+                                    case 5:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 7;
+                                        break;
+                                    case 6:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 8;
+                                        break;
+                                    case 7:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 9;
+                                        break;
+                                    case 8:
+                                        lstRoom.ListRoom[roomID].MaxRounds = 10;
+                                        break;
+                                    default:
+                                        break;
                                 }
                             }
-                            updateUi("Room" + receive[9].ToString() + "_" + playerName + ": lắc được xí ngầu " + number.ToString());
+                            updateUi(lstRoom.ListRoom[roomID].StoryTimeLimit + " " + lstRoom.ListRoom[roomID].MaxRounds);
+                            for (int i = 0; i < lstRoom.ListRoom[roomID].playerCount(); i++)
+                            {
+                                sendData("#_TCP_US" + receive[8].ToString() + receive[9].ToString() + receive[10].ToString(), lstRoom.ListRoom[roomID].ListPlayer[i]._Socket);
+                            }
+                            updateUi("Room" + receive[8].ToString() + ": Changed Settings.");
                         }
-                        if (receive.Substring(0, 8) == "#_TCP_UB")
+
+
+                        // Khi nhận thông điệp bắt đầu trò chơi
+                        if (receive.Substring(0, 8) == "#_TCP_ST")
                         {
-                            string _str = "";
-                            for (int i = 11; i < receive.Length; i++)
+                            int roomIndex = int.Parse(receive[8].ToString());
+                            Room currentRoom = lstRoom.ListRoom[roomIndex];
+                            updateUi($"Room {roomIndex + 1} started.");
+                            // Khởi động trò chơi và Timer nếu chưa có trong roomTimers
+                            if (!roomTimers.ContainsKey(roomIndex))
                             {
-                                if (receive[i] == '_')
+                                currentRoom.StartGame(); // Bắt đầu trò chơi
+
+                                // Gửi thông báo bắt đầu đến tất cả người chơi trong phòng
+                                foreach (User player in currentRoom.ListPlayer)
                                 {
-                                    break;
+                                    sendData($"#_TCP_ST{roomIndex}" + currentRoom.StoryTimeLimit, player._Socket);
                                 }
-                                _str += receive[i];
-                            }
-                            foreach (User us in lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer)
-                            {
-                                if (us._Socket.RemoteEndPoint.ToString() != s.RemoteEndPoint.ToString())
-                                {
-                                    sendData("#_TCP_UB" + receive[8].ToString() + receive[9].ToString() + receive[10].ToString() + _str, us._Socket);
-                                    //MessageBox.Show("#_TCP_UB" + receive[8].ToString() + receive[9].ToString() + receive[10].ToString() + _str);
-                                }
-                                //sendData("#_TCP_UB" + receive[8].ToString() + receive[9].ToString() + receive[10].ToString() + _str, us._Socket);
+
+                                // Khởi tạo và bắt đầu Timer cho phòng (nếu chưa có)
+                                var roomTimer = new System.Timers.Timer();
+                                roomTimer.Interval = currentRoom.StoryTimeLimit * 1000; // Thời gian giới hạn (tính bằng mili giây)
+                                roomTimer.Elapsed += (sender, e) => OnRoomTimerElapsed(sender, e, roomIndex); // Gọi hàm khi hết thời gian
+                                roomTimers[roomIndex] = roomTimer;
+                                roomTimer.Start(); // Bắt đầu Timer cho phòng
                             }
                         }
-                        if (receive.Substring(0, 8) == "#_TCP_VD")
+                        if (receive.Substring(0,8) == "#_TCP_SM")
                         {
-                            foreach (User us in lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer)
+                            lock (roomTimers)
                             {
-                                sendData("#_TCP_KQ" + playerName, us._Socket);
+                                string[] parts = receive.Split('|');
+
+                                int roomId = int.Parse(parts[1]);
+                                int currentRound = int.Parse(parts[2]);
+                                string username = parts[3];
+                                string sentence = parts[4];
+
+                                Room currentRoom = lstRoom.ListRoom[roomId];
+                                User player = currentRoom.ListPlayer.FirstOrDefault(user => user.UserName == username);
+                                if (player != null)
+                                {
+                                    currentRoom.SubmitSentence(player, sentence);
+                                }
+                                updateUi(currentRoom.CurrentRound + " " + currentRoom.MaxRounds.ToString());
                             }
                         }
-                        if (receive.Substring(0, 9) == "#_TCP_DMK")
+                           
+                        if (receive.Substring(0, 9) == "#_TCP_DMK") //Change password
                         {
                             ChangePassword(receive, s, playerName);
                         }
@@ -290,23 +483,106 @@ namespace frmServer
                                 updateUi("Room" + receive[8].ToString() + "_" + playerName + ": " + receive.Substring(9));
                             }
                         }
+                            
                         updateUi(s.RemoteEndPoint.ToString() + ": " + receive);
+                        
                     }
                     catch
                     {
                         updateUi("Client: " + receive);
                     }
-
+                    Array.Clear(buffReceive, 0, buffReceive.Length);
                     s.BeginReceive(buffReceive, 0, buffReceive.Length, SocketFlags.None, new AsyncCallback(beginReceive), s);
                 }
             }
             catch { }
         }
+        // Hàm xử lý khi hết thời gian của Timer cho phòng
+        private void OnRoomTimerElapsed(object sender, ElapsedEventArgs e, int roomIndex)
+        {
 
-        /// <summary>
-        /// Listview kiểm tra account online
-        /// </summary>
-        /// <param name="us"></param>
+            Room currentRoom = lstRoom.ListRoom[roomIndex];
+            if (roomTimers.ContainsKey(roomIndex))
+            {
+                System.Timers.Timer roomTimer = roomTimers[roomIndex];
+                roomTimer.Stop(); // Dừng timer hiện tại
+                                  // Gửi thông báo hết thời gian
+                foreach (User player in currentRoom.ListPlayer)
+                {
+                    sendData($"#_TCP_TO{roomIndex}{currentRoom.CurrentRound}", player._Socket); // Thông báo thời gian hết
+                }
+
+                // Tạm dừng 5 giây
+                Thread.Sleep(5000);
+                
+                // Thực hiện các hành động tiếp theo
+                if (currentRoom.CurrentRound < currentRoom.MaxRounds)
+                {
+                    while (!currentRoom.IsRoundSubmitted) { Thread.Sleep(1); } // Vòng lặp tránh lỗi chưa đủ câu (index)
+                    List<string> shownrotatedSentences = currentRoom.showRotateStories();
+
+                    // Gửi câu đã rotate tới mỗi người chơi
+                    for (int i = 0; i < currentRoom.playerCount(); i++)
+                    {
+                        User us = currentRoom.ListPlayer[i];
+                        string rotatedSentence = shownrotatedSentences[i];
+                        updateUi(rotatedSentence);
+                        sendData($"#_TCP_NT{currentRoom.CurrentRound}{rotatedSentence}", us._Socket);
+                    }
+                  
+                    roomTimer.Interval = currentRoom.StoryTimeLimit * 1000; // Thiết lập lại thời gian
+                    roomTimer.Start(); // Bắt đầu lại Timer
+                    currentRoom.StartNextRound(); // Tiến hành vòng mới
+                }
+                else
+                {
+                    // Kết thúc trò chơi nếu đã đạt đến giới hạn số vòng
+                    currentRoom.EndGame();
+                    string completeStories = currentRoom.GetCompleteStories();
+                    updateUi($"Room {roomIndex + 1} ended round.");
+
+                    // Gửi thông điệp kết thúc trò chơi với danh sách câu chuyện cho tất cả người chơi
+                    foreach (User us in currentRoom.ListPlayer)
+                    {
+                        sendData($"#_TCP_END{roomIndex}|{completeStories}", us._Socket);
+                    }
+
+                    // Dừng và hủy bỏ timer sau khi kết thúc trò chơi
+                    if (roomTimer != null)
+                    {
+                        roomTimer.Stop(); // Dừng timer
+                        roomTimer.Dispose(); // Giải phóng tài nguyên
+                    }
+                }
+
+            }
+ 
+        }
+
+        // Hàm xử lý khi chủ phòng rời đi
+        private void HandleMasterExit(Socket masterSocket, int roomNumber)
+        {
+            // Lấy phòng mà chủ phòng hiện tại đang ở
+            var room = lstRoom.ListRoom[roomNumber - 1];
+            User exitingMaster = room.ListPlayer.FirstOrDefault(u => u._Socket == masterSocket);
+
+            // Nếu tìm thấy chủ phòng hiện tại, hủy quyền chủ phòng của người này
+            if (exitingMaster != null)
+            {
+                exitingMaster.IsMaster = false;
+
+                // Tìm người chơi khác trong cùng phòng và gán quyền chủ phòng
+                User newMaster = room.ListPlayer.FirstOrDefault(u => u != exitingMaster);
+
+                if (newMaster != null)
+                {
+                    newMaster.IsMaster = true;
+                    sendData($"#_TCP_BM_R{roomNumber}_{newMaster.UserName}", newMaster._Socket);
+                    updateUi($"{newMaster.UserName} là chủ phòng mới của phòng {roomNumber}.");
+                }
+            }
+        }
+
         private void addListView(User us)
         {
 
@@ -327,23 +603,28 @@ namespace frmServer
             }
         }
         #region Check_SignInUp
+        private bool ValidateHMAC(string clientHMAC, string apiKey, string secret)
+        {
+            using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secret)))
+            {
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(apiKey));
+                string expectedHMAC = Convert.ToBase64String(hash);
+                return clientHMAC == expectedHMAC;
+            }
+        }
         private void Check_SignIn(string str, Socket sk)
         {
             string user_client = "";
             string pass_client = "";
 
-            // Đảm bảo độ dài chuỗi hợp lệ trước khi truy cập
-            if (str.Length > 8)
+            for (int i = 8; i < str.Length; i++)
             {
-                for (int i = 8; i < str.Length; i++)
+                if (str[i] == ' ')
                 {
-                    if (str[i] == ' ')
-                    {
-                        pass_client = str.Substring(i + 1);
-                        break;
-                    }
-                    user_client += str[i];
+                    pass_client = str.Substring(i + 1);
+                    break;
                 }
+                user_client += str[i];
             }
 
             bool checkLogIn = false;
@@ -357,60 +638,56 @@ namespace frmServer
                 }
             }
 
-            if (!checkStt)
+            if (checkStt == false)
             {
-                XmlReaderSettings settings = new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit };
-                using (XmlReader reader = XmlReader.Create("ACCOUNT.xml", settings))
-                {
-                    XmlDocument docXML = new XmlDocument();
-                    docXML.Load(reader);
+                XmlDocument docXML = new XmlDocument();
+                docXML.Load("ACCOUNT.xml");
 
-                    XmlNodeList userList = docXML.SelectNodes("//user");
-                    foreach (XmlNode node in userList)
+                XmlNode user = docXML.SelectSingleNode("//account");
+                XmlNodeList userList = user.SelectNodes("//user");
+
+                foreach (XmlNode node in userList)
+                {
+                    if (node.Attributes != null)
                     {
-                        if (node.Attributes?["id"]?.Value == user_client)
+                        if (node.Attributes["id"].Value == user_client)
                         {
-                            if (node.InnerText ==   HashPassword(pass_client))
+                            if (node.InnerText == pass_client)
                             {
                                 updateUi(user_client + " đã online");
                                 User us = new User(user_client, sk);
                                 lstUser.addPlayer(us);
+                                buffSend = new byte[1024];
                                 buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTC");
                                 sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
+                                Thread.Sleep(200);
+                                string s = "#_TCP_UF";
+                                for (int i = 0; i < 10; i++)
+                                {
+                                    s += "|" + lstRoom.ListRoom[i].playerCount().ToString();
+                                }
+                                sendData(s, sk);
+                                addListView(us);
                                 checkLogIn = true;
                                 break;
                             }
                         }
                     }
                 }
-                if (!checkLogIn)
+                if (checkLogIn == false)
                 {
+                    buffSend = new byte[1024];
                     buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTB");
                     sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
                 }
             }
             else
             {
+                buffSend = new byte[1024];
                 buffSend = Encoding.UTF8.GetBytes("#_TCP_DNTT");
                 sk.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendText), sk);
             }
         }
-
-        public static string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    builder.Append(b.ToString("x2")); // chuyển byte sang chuỗi thập lục phân
-                }
-                return builder.ToString();
-            }
-        }
-
-
         public void Check_SignUp(string str, Socket sk)
         {
             string user_client = "";
@@ -492,16 +769,57 @@ namespace frmServer
             startServer();
             timer2.Start();
         }
+        private void CloseServer()
+        {
+            if (!isServerRunning) return; // Nếu server chưa chạy, không làm gì
+
+            try
+            {
+                // Ngừng chấp nhận kết nối mới
+                if (server != null)
+                {
+                    server.Close();
+                    server = null;
+                    updateUi("Server đã được đóng.");
+                }
+
+                // Đóng các kết nối client đang hoạt động
+                foreach (var clientSocket in Client)
+                {
+                    if (clientSocket != null && clientSocket.Connected)
+                    {
+                        try
+                        {
+                            clientSocket.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Ghi lại thông báo lỗi (có thể hiển thị cho người dùng nếu cần)
+                            MessageBox.Show("Lỗi khi đóng kết nối client: " + ex.Message);
+                        }
+                    }
+                }
+
+                // Xóa danh sách client
+                Client.Clear();
+            }
+            catch (Exception ex)
+            {
+                // Ghi lại thông báo lỗi khi đóng server
+                Console.WriteLine("Lỗi khi đóng server: " + ex.Message);
+            }
+        }
 
         private void btnCloseServer_Click(object sender, EventArgs e)
         {
-            
+            lstAccount.Items.Clear();
+            CloseServer();
             timer2.Stop();
         }
 
         private void btnSendMsgfromServer_Click(object sender, EventArgs e)
         {
-            if (lblReceiver.Text != "")
+            if (lblReceiver.Text != "Chọn 1 Tài khoản Online")
             {
 
                 if (txtMessage.Text != "")
@@ -552,44 +870,46 @@ namespace frmServer
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Thread threadRun = new Thread(
-                delegate ()
-                {
-                    timTimeOut();
-                }
+            Thread threadRun = new(
+                timTimeOut
                 );
             threadRun.Start();
         }
         private void timTimeOut()
         {
-            if (lstUser.ListPlayer.Count > 0)
+            try
             {
-                foreach (User us in lstUser.ListPlayer)
+                if (lstUser.ListPlayer.Count > 0)
                 {
-                    if (!isConnected(us._Socket))
+                    foreach (User us in lstUser.ListPlayer)
                     {
-                        if (us.InRoom == true)
+                        if (!isConnected(us._Socket))
                         {
-                            lstRoom.ListRoom[us.RoomNumber].ListPlayer.Remove(us);
-                        }
-
-                        foreach (ListViewItem item in lstAccount.Items)
-                        {
-                            if (item.SubItems[1].Text == us.UserName)
+                            if (us.InRoom == true)
                             {
-                                lstAccount.Items.Remove(item);
+                                lstRoom.ListRoom[us.RoomNumber].ListPlayer.Remove(us);
                             }
+
+                            foreach (ListViewItem item in lstAccount.Items)
+                            {
+                                if (item.SubItems[1].Text == us.UserName)
+                                {
+                                    lstAccount.Items.Remove(item);
+                                }
+                            }
+                            updateUi(us.UserName + " is disconnected ...");
+                            lstUser.ListPlayer.Remove(us);
+                            break;
                         }
-                        updateUi(us.UserName + " is disconnected ...");
-                        lstUser.ListPlayer.Remove(us);
-                        break;
                     }
+
+                }
+                else
+                {
+                    //MessageBox.Show("No connect ...");
                 }
             }
-            else
-            {
-                //MessageBox.Show("No connect ...");
-            }
+            catch { }
         }
         public bool isConnected(Socket s)
         {
@@ -610,5 +930,12 @@ namespace frmServer
             lstAccount.Columns.Add("Địa chỉ IP", 110);
             lstAccount.Columns.Add("Phòng", 60);
         }
+
+
+        private void frmServer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseServer();
+        }
+
     }
 }
