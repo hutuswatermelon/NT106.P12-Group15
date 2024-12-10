@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WinForm\\Client_System\\Client_System\\Client_System.csproj": {}
+    "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\Client_System.csproj": {}
   },
   "projects": {
-    "D:\\WinForm\\Client_System\\Client_System\\Client_System.csproj": {
+    "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\Client_System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WinForm\\Client_System\\Client_System\\Client_System.csproj",
+        "projectUniqueName": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\Client_System.csproj",
         "projectName": "Client_System",
-        "projectPath": "D:\\WinForm\\Client_System\\Client_System\\Client_System.csproj",
+        "projectPath": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\Client_System.csproj",
         "packagesPath": "C:\\Users\\CHT\\.nuget\\packages\\",
-        "outputPath": "D:\\WinForm\\Client_System\\Client_System\\obj\\",
+        "outputPath": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CHT\\AppData\\Roaming\\NuGet\\NuGet.Config",

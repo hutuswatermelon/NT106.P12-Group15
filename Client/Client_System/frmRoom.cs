@@ -368,7 +368,7 @@ namespace Client_System
         }
         private void btnStartRoom_Click(object sender, EventArgs e)
         {
-            //if (SocketClientSingleton.Instance.playerOfRoom[1,roomID] < 2) { return; }
+            if (SocketClientSingleton.Instance.playerOfRoom[1,roomID] < 2) { return; }
             panelPlaying.Visible = true;
             string message = "#_TCP_ST" + SocketClientSingleton.Instance.roomNumber.ToString();
             SocketClientSingleton.Instance.SendData(message);

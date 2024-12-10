@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\WinForm\\Client\\",
+  "WorkspaceRootPath": "D:\\WinForm\\NT106.P12-Group15\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\client\\client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\Client\\client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\Client\\client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -31,23 +35,36 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "frmRoom.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.cs",
+              "RelativeDocumentMoniker": "Client_System\\frmRoom.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.cs",
+              "RelativeToolTip": "Client_System\\frmRoom.cs",
+              "ViewState": "AQIAAGEBAAAAAAAAAIAywHEBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T16:52:46.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ReceivedCommand.cs",
-              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\ReceivedCommand.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\ReceivedCommand.cs",
               "RelativeDocumentMoniker": "Client_System\\ReceivedCommand.cs",
-              "ToolTip": "D:\\WinForm\\Client\\Client_System\\ReceivedCommand.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\ReceivedCommand.cs",
               "RelativeToolTip": "Client_System\\ReceivedCommand.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwA4AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T18:02:53.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SocketManager.cs",
-              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\SocketManager.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\SocketManager.cs",
               "RelativeDocumentMoniker": "Client_System\\SocketManager.cs",
-              "ToolTip": "D:\\WinForm\\Client\\Client_System\\SocketManager.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\SocketManager.cs",
               "RelativeToolTip": "Client_System\\SocketManager.cs",
               "ViewState": "AQIAAKsAAAAAAAAAAAAMwLQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -55,14 +72,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "frmStart.cs [Design]",
-              "DocumentMoniker": "D:\\WinForm\\Client\\Client_System\\frmStart.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs",
               "RelativeDocumentMoniker": "Client_System\\frmStart.cs",
-              "ToolTip": "D:\\WinForm\\Client_System\\Client_System\\frmStart.cs [Design]",
-              "RelativeToolTip": "..\\Client_System\\Client_System\\frmStart.cs [Design]",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs [Design]",
+              "RelativeToolTip": "Client_System\\frmStart.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T17:53:22.994Z"
+              "WhenOpened": "2024-12-09T17:53:22.994Z",
+              "EditorCaption": " [Design]"
             }
           ]
         },

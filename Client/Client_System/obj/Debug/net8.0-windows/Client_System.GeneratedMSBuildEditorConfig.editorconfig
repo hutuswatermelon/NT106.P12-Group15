@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Client_System
-build_property.ProjectDir = D:\WinForm\Client\Client_System\
+build_property.ProjectDir = D:\WinForm\NT106.P12-Group15\Client\Client_System\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
