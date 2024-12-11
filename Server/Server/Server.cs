@@ -193,7 +193,7 @@ namespace frmServer
                                         if (lstRoom.ListRoom[roomID].ListPlayer.Count() == 1)
                                         {
                                             us.IsMaster = true;
-                                            sendData("#_TCP_BM_R" + _nr.ToString() + "_" + us.UserName, s);
+                                            sendData("#_TCP_BM", s);
                                         }
                                         us.InRoom = true;
 
@@ -577,8 +577,10 @@ namespace frmServer
                 if (newMaster != null)
                 {
                     newMaster.IsMaster = true;
-                    sendData($"#_TCP_BM_R{roomNumber}_{newMaster.UserName}", newMaster._Socket);
-                    updateUi($"{newMaster.UserName} là chủ phòng mới của phòng {roomNumber}.");
+                    sendData($"#_TCP_BM", newMaster._Socket);
+                    foreach (User u in room.ListPlayer)
+                        sendData($"#_TCP_NM{newMaster.UserName}", u._Socket);
+                    updateUi($"{newMaster.UserName} là quản trò mới của phòng {roomNumber}.");
                 }
             }
         }

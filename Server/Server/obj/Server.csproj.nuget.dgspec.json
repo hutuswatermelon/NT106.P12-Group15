@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WinForm\\Server\\Server\\Server.csproj": {}
+    "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\WinForm\\Server\\Server\\Server.csproj": {
+    "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WinForm\\Server\\Server\\Server.csproj",
+        "projectUniqueName": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\WinForm\\Server\\Server\\Server.csproj",
+        "projectPath": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\CHT\\.nuget\\packages\\",
-        "outputPath": "D:\\WinForm\\Server\\Server\\obj\\",
+        "outputPath": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CHT\\AppData\\Roaming\\NuGet\\NuGet.Config",

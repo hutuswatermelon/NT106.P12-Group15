@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\WinForm\\Server\\",
+  "WorkspaceRootPath": "D:\\WinForm\\NT106.P12-Group15\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Server.cs",
-              "DocumentMoniker": "D:\\WinForm\\Server\\Server\\Server.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
-              "ToolTip": "D:\\WinForm\\Server\\Server\\Server.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AQIAADkBAAAAAAAAAADwv0YBAABAAAAA",
+              "ViewState": "AQIAAEsCAAAAAAAAAAA0wP8CAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T16:44:22.531Z",
               "EditorCaption": ""

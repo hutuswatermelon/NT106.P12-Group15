@@ -114,13 +114,15 @@ namespace Client_System
                 Invoke(new Action(() => HandleServerCommand(command, message)));
                 return;
             }
-            //updateUi(message);
+            updateUi(message);
             switch (command)
             {
                 case ServerCommand.BecomeMaster:
                     EnableMasterControls();
                     updateUi("Hiện tại bạn là quản trò!");
                     lblUserName1.Text = SocketClientSingleton.Instance.GetUserName();
+                    string updates = "#_TCP_US" + roomID + cbbTimer.SelectedIndex + cbbTurns.SelectedIndex;
+                    SendDataThreadSafe(updates);
                     break;
                 case ServerCommand.StartRoom:
                     if (int.Parse(message[8].ToString()) == roomID)
@@ -177,7 +179,6 @@ namespace Client_System
                 case ServerCommand.NewMaster:
                     string newMasterName = message.Substring(8);
                     OnMasterChanged(newMasterName);
-                    UpdatePlayerLabels();
                     break;
                 case ServerCommand.UpdateSettings:
                     int index1 = int.Parse(message[9].ToString());
@@ -353,18 +354,11 @@ namespace Client_System
         }
         private void OnMasterChanged(string newMasterName)
         {
-            if (newMasterName == SocketClientSingleton.Instance.GetUserName())
-            {
-                // Nếu người dùng là quản trò mới, kích hoạt các quyền đặc biệt
-                EnableMasterControls();
-                MessageBox.Show("Bạn hiện là quản trò của phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                // Nếu không, tắt quyền quản trò
-                DisableMasterControls();
-                MessageBox.Show($"{newMasterName} hiện là quản trò của phòng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            txtHost_ReadOnly.Text = newMasterName;
+            // Nếu không, tắt quyền quản trò
+            DisableMasterControls();
+
+            updateUi($"{newMasterName} hiện là quản trò của phòng.");
         }
         private void btnStartRoom_Click(object sender, EventArgs e)
         {

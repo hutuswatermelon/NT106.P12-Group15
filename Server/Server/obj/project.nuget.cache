@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Tj568fKNxfDPzvssGsSsGJv0a+A2omHIMBOi32zkHE1ZsjTcXkPyZ2zOPIY8Y4md2ttmGyKRTDf/XNYWWaV8w==",
+  "dgSpecHash": "F9YkJQ2lwXJnQGS39+3v5/AA+ErA/xQ+PH2ihlbA16QnhOJ9wSIqx6FXXZxxn9x5sMOszSfo2C4tcWSQ1vXVkg==",
   "success": true,
-  "projectFilePath": "D:\\WinForm\\Server\\Server\\Server.csproj",
+  "projectFilePath": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
