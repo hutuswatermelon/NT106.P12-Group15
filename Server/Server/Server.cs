@@ -28,6 +28,7 @@ namespace frmServer
 
         private bool isServerRunning = false; // Kiểm tra trạng thái server
 
+        #region Load & UI
         public frmServer()
         {
             InitializeComponent();
@@ -36,11 +37,21 @@ namespace frmServer
             IPAddress iPAddress = getIP();
             txtIPServer.Text = iPAddress.ToString();
         }
+        
+        private void frmServer_Load(object sender, EventArgs e)
+        {
+            lstAccount.Columns.Add("STT", 60);
+            lstAccount.Columns.Add("Tên", 130);
+            lstAccount.Columns.Add("Địa chỉ IP", 110);
+            lstAccount.Columns.Add("Phòng", 60);
+        }
         private void Update(string msg)
         {
             lstLog.Items.Add(msg);
             lstLog.TopIndex = lstLog.Items.Count - 1;
         }
+        #endregion
+
         private IPAddress getIP()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -771,6 +782,7 @@ namespace frmServer
             startServer();
             timer2.Start();
         }
+        #region Close Server
         private void CloseServer()
         {
             if (!isServerRunning) return; // Nếu server chưa chạy, không làm gì
@@ -818,7 +830,12 @@ namespace frmServer
             CloseServer();
             timer2.Stop();
         }
-
+        private void frmServer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseServer();
+        }
+        #endregion
+        #region Send Message From Server
         private void btnSendMsgfromServer_Click(object sender, EventArgs e)
         {
             if (lblReceiver.Text != "Chọn 1 Tài khoản Online")
@@ -866,10 +883,12 @@ namespace frmServer
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblReceiver.Text = "";
+            lblReceiver.Text = "Chọn 1 Tài khoản Online";
             timer1.Stop();
         }
+        #endregion
 
+        #region Check Socket Connection TimeOut
         private void timer2_Tick(object sender, EventArgs e)
         {
             Thread threadRun = new(
@@ -924,20 +943,6 @@ namespace frmServer
                 return false;
             }
         }
-
-        private void frmServer_Load(object sender, EventArgs e)
-        {
-            lstAccount.Columns.Add("STT", 60);
-            lstAccount.Columns.Add("Tên", 130);
-            lstAccount.Columns.Add("Địa chỉ IP", 110);
-            lstAccount.Columns.Add("Phòng", 60);
-        }
-
-
-        private void frmServer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseServer();
-        }
-
+        #endregion
     }
 }

@@ -186,6 +186,10 @@
             txtMessage.Size = new Size(266, 34);
             txtMessage.TabIndex = 7;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // timer2
             // 
             timer2.Tick += timer2_Tick;
