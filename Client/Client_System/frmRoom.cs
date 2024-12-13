@@ -114,7 +114,7 @@ namespace Client_System
                 Invoke(new Action(() => HandleServerCommand(command, message)));
                 return;
             }
-            updateUi(message);
+            //updateUi(message);
             switch (command)
             {
                 case ServerCommand.BecomeMaster:
@@ -242,7 +242,10 @@ namespace Client_System
                     string RoomID = message.Substring(8, 1);
 
                     barTimer.Value = 0;
-                    string msg = "#_TCP_SM" + "|" + roomID + "|" + currentRound + "|" + SocketClientSingleton.Instance.GetUserName() + "|" + txtSentence.Text;
+                    string sentence = "";
+                    if (txtSentence.Text == null || txtSentence.Text == "") sentence = " ";
+                    else sentence = txtSentence.Text;
+                    string msg = "#_TCP_SM" + "|" + roomID + "|" + currentRound + "|" + SocketClientSingleton.Instance.GetUserName() + "|" + sentence;
                     SocketClientSingleton.Instance.SendData(msg);
                     break;
                 case ServerCommand.NextRound:

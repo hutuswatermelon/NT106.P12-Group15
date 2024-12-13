@@ -44,8 +44,6 @@ public class SocketClientSingleton
     public event Action ConnectionSuccessful;
     public event Action<int, int> PlayerCountChanged;
     public bool ConnectSuccess = false;
-    private System.Windows.Forms.Timer timer1;
-    private System.Windows.Forms.Timer timer2;
     public void BeginConnect(string ipAddress, int port, AsyncCallback callback)
     {
         if (!Client.Connected)
@@ -72,7 +70,7 @@ public class SocketClientSingleton
             // Thông báo kết nối thành công
             MessageBox.Show("Kết nối thành công đến máy chủ.");
             ConnectSuccess = true;
-            ConnectionSuccessful?.Invoke();
+            //ConnectionSuccessful?.Invoke();
         }
         catch (SocketException)
         {
@@ -132,17 +130,14 @@ public class SocketClientSingleton
     }
     private ServerCommand ParseCommand(string data)
     {
-        //
-        if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTB") return ServerCommand.SignInFailed;
-
+        if (data.StartsWith("#_APIKeyValidated")) return ServerCommand.APIvalidated;
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_TO") return ServerCommand.TimeOut;
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_NT")
         {
-            //MessageBox.Show(data);
             return ServerCommand.NextRound;
         }
         else if (data.Length >= 9 && data.Substring(0, 9) == "#_TCP_END") return ServerCommand.EndStory;
-        
+
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_UF")
         {
             string[] parts = data.Split('|');
@@ -155,25 +150,18 @@ public class SocketClientSingleton
             }
             return ServerCommand.UpdateLobbyforNewJoining;
         }
-        else if (data.Length >= 9 && data.Substring(0, 9) == "#_Chat_00") return ServerCommand.ChatMessage;
-        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_ST") return ServerCommand.StartRoom;
-        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_BM") return ServerCommand.BecomeMaster;
-        else if (data.Length >= 14 && data.Substring(0, 14) == "#_TCP_NM")
-        {
-            //
-            return ServerCommand.NewMaster;
-        }
-        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_US")
-        {
-            Console.Write(data);
-            return ServerCommand.UpdateSettings;
-        }
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_UL")
         {
             playerOfRoom[1, int.Parse(data[8].ToString())] = int.Parse(data[9].ToString());
             Infor[int.Parse(data[8].ToString())].Text = data[9].ToString();
             return ServerCommand.UpdateLobby;
         }
+        else if (data.Length >= 9 && data.Substring(0, 9) == "#_Chat_00") return ServerCommand.ChatMessage;
+        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_ST") return ServerCommand.StartRoom;
+        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_BM") return ServerCommand.BecomeMaster;
+        else if (data.Length >= 14 && data.Substring(0, 14) == "#_TCP_NM") return ServerCommand.NewMaster;
+        else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_US") return ServerCommand.UpdateSettings;
+        
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_MP")
         {
             int roomId = int.Parse(data.Substring(8, 1));  // X represents the room ID
@@ -190,13 +178,14 @@ public class SocketClientSingleton
         {
             return ServerCommand.UpdatePlayerinRoom;
         }
-        else if (data.Length >= 9 && data.Substring(0, 8) == "#_TCP_ER") 
+        else if (data.Length >= 9 && data.Substring(0, 8) == "#_TCP_ER")
         {
             int roomID = int.Parse(data.Substring(8, 1));
             playerOfRoom[3, roomID] = 0;
             return ServerCommand.EndRoom;
         }
         else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTT") return ServerCommand.SIF_AccountUsing;
+        else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTB") return ServerCommand.SignInFailed;
         else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTC") return ServerCommand.SignInSuccess;
         else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DKTB") return ServerCommand.SignUpFailed;
         else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DKTC") return ServerCommand.SignUpSuccess;

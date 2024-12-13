@@ -274,7 +274,7 @@ namespace frmServer
                                             Thread.Sleep(200);
 
                                             // Cập nhật danh sách tên người chơi trong phòng
-                                            string msg2 = "#_TCP_UP" + receive[8].ToString() + lstRoom.ListRoom[roomID].playerCount()
+                                            string msg2 = "#_TCP_UP" + roomID + lstRoom.ListRoom[roomID].playerCount()
                                                 + lstRoom.ListRoom[roomID].MaxPlayers;
                                             // Lấy danh sách tên người chơi
                                             var playerNames = lstRoom.ListRoom[roomID].ListPlayer.Select(p => p.UserName);
@@ -284,7 +284,7 @@ namespace frmServer
                                         foreach (User _us in lstUser.ListPlayer)
                                         {
                                             Thread.Sleep(200);
-                                            string msg1 = "#_TCP_UL" + receive[8].ToString() + lstRoom.ListRoom[roomID].playerCount();
+                                            string msg1 = "#_TCP_UL" + roomID + lstRoom.ListRoom[roomID].playerCount();
                                             sendData(msg1, _us._Socket);
                                             Thread.Sleep(200);
                                             
@@ -299,10 +299,11 @@ namespace frmServer
                         }
                         if (receive.Substring(0, 8) == "#_TCP_MP") //Max player in room
                         {
-                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].MaxPlayers = int.Parse(receive[9].ToString());
+                            int roomID = int.Parse(receive[8].ToString());
+                            lstRoom.ListRoom[roomID].MaxPlayers = int.Parse(receive[9].ToString());
                             foreach (User _us in lstUser.ListPlayer)
                             {
-                                sendData("#_TCP_MP" + receive[8].ToString() + lstRoom.ListRoom[int.Parse(receive[8].ToString())].MaxPlayers, _us._Socket);
+                                sendData("#_TCP_MP" + roomID + lstRoom.ListRoom[roomID].MaxPlayers, _us._Socket);
                             }
                         }
                         if (receive.Substring(0, 8) == "#_TCP_OR")
@@ -476,22 +477,25 @@ namespace frmServer
                         }
                         if (receive.Substring(0, 9) == "#_Chat_00")
                         {
+                            string msg = receive.Substring(9);
                             updateUi(playerName + ": " + receive.Substring(9));
 
                             for (int i = 0; i < lstUser.ListPlayer.Count; i++)
                             {
                                 if (!lstUser.ListPlayer[i].InRoom)
                                 {
-                                    sendData("#_Chat_00" + playerName + ": " + receive.Substring(9), lstUser.ListPlayer[i]._Socket);
+                                    sendData("#_Chat_00" + playerName + ": " + msg, lstUser.ListPlayer[i]._Socket);
                                 }
                             }
                         }
                         if (receive.Substring(0, 8) == "#_Chat_1")
                         {
+                            string roomID = receive[8].ToString();
+                            string msg = receive.Substring(9);
                             for (int i = 0; i < lstRoom.ListRoom[int.Parse(receive[8].ToString())].playerCount(); i++)
                             {
                                 sendData("#_Chat_00" + playerName + ": " + receive.Substring(9), lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[i]._Socket);
-                                updateUi("Room" + receive[8].ToString() + "_" + playerName + ": " + receive.Substring(9));
+                                updateUi("Room" + roomID + "_" + playerName + ": " + msg);
                             }
                         }
                             
