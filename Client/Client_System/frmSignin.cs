@@ -82,9 +82,15 @@
                     break;
                 case ServerCommand.SignInSuccess:
                     this.Close();
+                    frmSignup su = Application.OpenForms["frmSignup"] as frmSignup;
+                    if (su != null)
+                    {
+                        su.Close();
+                    }
                     //MessageBox.Show("Đăng nhập thành công");
                     new frmLobby().Show();
                     SocketClientSingleton.Instance.SetUserName(txtUsername.Text);
+
                     break;
                 default:
                     break;
@@ -100,7 +106,16 @@
 
         private void lbRegister_Click(object sender, EventArgs e)
         {
-            new frmSignup().Show();
+            frmSignup su = Application.OpenForms["frmSignup"] as frmSignup;
+            if (su == null)
+            {
+                su = new frmSignup();
+                su.Show();
+            }
+            else
+            {
+                su.Show();
+            }
             this.Hide();
         }
 

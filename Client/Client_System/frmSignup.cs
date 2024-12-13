@@ -149,8 +149,17 @@ namespace Client_System
                     DialogResult result = MessageBox.Show("Đăng kí thành công, bạn có muốn chuyển sang trang đăng nhập?", "ĐĂNG KÍ THÀNH CÔNG", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        this.Hide();
-                        new frmSignin().Show();
+                        frmSignin si = Application.OpenForms["frmSignin"] as frmSignin;
+                        if (si == null)
+                        {
+                            si = new frmSignin();
+                            si.Show();
+                        }
+                        else
+                        {
+                            si.Show();
+                        }
+                        this.Close();
 
                     }
                     else if (result == DialogResult.No)
@@ -174,7 +183,16 @@ namespace Client_System
 
         private void Login_Click(object sender, EventArgs e)
         {
-            new frmSignin().Show();
+            frmSignin si = Application.OpenForms["frmSignin"] as frmSignin;
+            if (si == null)
+            {
+                si = new frmSignin();
+                si.Show();
+            }
+            else
+            {
+                si.Show();
+            }
             this.Hide();
         }
 
