@@ -8,6 +8,7 @@ namespace Client_System
 {
     public enum ServerCommand
     {
+        APIvalidated,
         SignInFailed,
         SIF_AccountUsing,
         SignInSuccess,

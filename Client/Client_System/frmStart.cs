@@ -30,7 +30,8 @@ namespace Client_System
             CheckForIllegalCrossThreadCalls = false;
             btnSignin.Enabled = false;
             btnSignup.Enabled = false;
-            SocketClientSingleton.Instance.ConnectionSuccessful += EnableButtons;
+            //SocketClientSingleton.Instance.ConnectionSuccessful += EnableButtons;
+            SocketClientSingleton.Instance.CommandReceived += HandleServerCommand;
             this.MouseDown += Form_MouseDown;
             this.MouseMove += Form_MouseMove;
             this.MouseUp += Form_MouseUp;
@@ -77,12 +78,14 @@ namespace Client_System
         {
             new frmSignup().Show();
             this.Hide();
+            SocketClientSingleton.Instance.CommandReceived -= HandleServerCommand;
         }
 
         private void btnSignin_Click(object sender, EventArgs e)
         {
             new frmSignin().Show();
             this.Hide();
+            SocketClientSingleton.Instance.CommandReceived -= HandleServerCommand;
         }
         private void startClient()
         {
@@ -115,6 +118,18 @@ namespace Client_System
             catch (Exception ex)
             {
                 MessageBox.Show("Kết nối thất bại: " + ex.Message);
+            }
+        }
+        private void HandleServerCommand(ServerCommand command, string message)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => HandleServerCommand(command, message)));
+                return;
+            }
+            if (command == ServerCommand.APIvalidated)
+            {
+                EnableButtons();
             }
         }
         public void EnableButtons()

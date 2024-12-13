@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\WinForm\\NT106.P12-Group15\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\socketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\receivedcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|d:\\winform\\nt106.p12-group15\\client\\client_system\\frmroom.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmroom.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\frmroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|solutionrelative:client_system\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A541F84B-613C-42DB-A1F6-FA0473CFFA3C}|Client_System\\Client_System.csproj|D:\\WinForm\\NT106.P12-Group15\\Client\\client_system\\frmstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -30,75 +42,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmChangePassword.cs",
-              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmChangePassword.cs",
-              "RelativeDocumentMoniker": "Client_System\\frmChangePassword.cs",
-              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmChangePassword.cs",
-              "RelativeToolTip": "Client_System\\frmChangePassword.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAAADAAAAApAAAA",
+              "DocumentIndex": 3,
+              "Title": "frmRoom.Designer.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.Designer.cs",
+              "RelativeDocumentMoniker": "Client_System\\frmRoom.Designer.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.Designer.cs",
+              "RelativeToolTip": "Client_System\\frmRoom.Designer.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBQAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T09:03:56.207Z",
+              "WhenOpened": "2024-12-13T09:44:31.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ReceivedCommand.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\ReceivedCommand.cs",
+              "RelativeDocumentMoniker": "Client_System\\ReceivedCommand.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\ReceivedCommand.cs",
+              "RelativeToolTip": "Client_System\\ReceivedCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T09:38:20.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmStart.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs",
+              "RelativeDocumentMoniker": "Client_System\\frmStart.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs",
+              "RelativeToolTip": "Client_System\\frmStart.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCIAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T06:56:26.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmChangePassword.cs",
+              "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmChangePassword.cs",
+              "RelativeDocumentMoniker": "Client_System\\frmChangePassword.cs",
+              "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmChangePassword.cs",
+              "RelativeToolTip": "Client_System\\frmChangePassword.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAIBJwDAAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T09:03:56.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "frmLobby.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmLobby.cs",
               "RelativeDocumentMoniker": "Client_System\\frmLobby.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmLobby.cs",
               "RelativeToolTip": "Client_System\\frmLobby.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAABRwA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T09:03:40.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T09:03:40.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "frmRoom.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.cs",
               "RelativeDocumentMoniker": "Client_System\\frmRoom.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmRoom.cs",
               "RelativeToolTip": "Client_System\\frmRoom.cs",
-              "ViewState": "AQIAAMUBAAAAAAAAAAAewOEBAAAJAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAIwBEAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T16:52:46.422Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SocketManager.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\SocketManager.cs",
               "RelativeDocumentMoniker": "Client_System\\SocketManager.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\SocketManager.cs",
               "RelativeToolTip": "Client_System\\SocketManager.cs",
-              "ViewState": "AQIAAMoAAAAAAAAAAAAAAMoAAABJAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAD4vzwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T18:02:51.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "frmStart.cs [Design]",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs",
               "RelativeDocumentMoniker": "Client_System\\frmStart.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Client\\Client_System\\frmStart.cs [Design]",
               "RelativeToolTip": "Client_System\\frmStart.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T17:53:22.994Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-12-09T17:53:22.994Z"
             }
           ]
         },

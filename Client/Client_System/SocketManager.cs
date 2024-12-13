@@ -44,8 +44,6 @@ public class SocketClientSingleton
     public event Action ConnectionSuccessful;
     public event Action<int, int> PlayerCountChanged;
     public bool ConnectSuccess = false;
-    private System.Windows.Forms.Timer timer1;
-    private System.Windows.Forms.Timer timer2;
     public void BeginConnect(string ipAddress, int port, AsyncCallback callback)
     {
         if (!Client.Connected)
@@ -72,7 +70,7 @@ public class SocketClientSingleton
             // Thông báo kết nối thành công
             MessageBox.Show("Kết nối thành công đến máy chủ.");
             ConnectSuccess = true;
-            ConnectionSuccessful?.Invoke();
+            //ConnectionSuccessful?.Invoke();
         }
         catch (SocketException)
         {
@@ -133,7 +131,8 @@ public class SocketClientSingleton
     private ServerCommand ParseCommand(string data)
     {
         //
-        if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTB") return ServerCommand.SignInFailed;
+        if (data.StartsWith("#_APIKeyValidated")) return ServerCommand.APIvalidated;
+        else if (data.Length >= 10 && data.Substring(0, 10) == "#_TCP_DNTB") return ServerCommand.SignInFailed;
 
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_TO") return ServerCommand.TimeOut;
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_NT")
@@ -142,7 +141,7 @@ public class SocketClientSingleton
             return ServerCommand.NextRound;
         }
         else if (data.Length >= 9 && data.Substring(0, 9) == "#_TCP_END") return ServerCommand.EndStory;
-        
+
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_UF")
         {
             string[] parts = data.Split('|');
@@ -190,7 +189,7 @@ public class SocketClientSingleton
         {
             return ServerCommand.UpdatePlayerinRoom;
         }
-        else if (data.Length >= 9 && data.Substring(0, 8) == "#_TCP_ER") 
+        else if (data.Length >= 9 && data.Substring(0, 8) == "#_TCP_ER")
         {
             int roomID = int.Parse(data.Substring(8, 1));
             playerOfRoom[3, roomID] = 0;

@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\WinForm\\NT106.P12-Group15\\Server\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|D:\\WinForm\\NT106.P12-Group15\\Server\\server\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|D:\\WinForm\\NT106.P12-Group15\\Server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\server.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|D:\\WinForm\\NT106.P12-Group15\\Server\\server\\server.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\server.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\roomlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|D:\\WinForm\\NT106.P12-Group15\\Server\\server\\roomlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\roomlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|d:\\winform\\nt106.p12-group15\\server\\server\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CCF99BC-F296-46F1-8BDF-1049E40C11C6}|Server\\Server.csproj|solutionrelative:server\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,11 +38,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Server.cs [Design]",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Server.Designer.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.Designer.cs",
               "RelativeDocumentMoniker": "Server\\Server.Designer.cs",
@@ -62,12 +62,11 @@
               "RelativeToolTip": "Server\\Server.Designer.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAD4vykAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T09:18:19.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T09:18:19.426Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "RoomList.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\RoomList.cs",
               "RelativeDocumentMoniker": "Server\\RoomList.cs",
@@ -75,31 +74,30 @@
               "RelativeToolTip": "Server\\RoomList.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T09:12:25.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T09:12:25.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Room.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Room.cs",
               "RelativeDocumentMoniker": "Server\\Room.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Room.cs",
               "RelativeToolTip": "Server\\Room.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T09:12:21.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Server.cs",
               "DocumentMoniker": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
               "ToolTip": "D:\\WinForm\\NT106.P12-Group15\\Server\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AQIAAEADAAAAAAAAAAAuwEsDAAAqAAAA",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAMwJ0AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T16:44:22.531Z",
               "EditorCaption": ""
