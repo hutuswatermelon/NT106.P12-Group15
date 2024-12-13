@@ -114,7 +114,7 @@ namespace Client_System
                 Invoke(new Action(() => HandleServerCommand(command, message)));
                 return;
             }
-            updateUi(message);
+            //updateUi(message);
             switch (command)
             {
                 case ServerCommand.BecomeMaster:
