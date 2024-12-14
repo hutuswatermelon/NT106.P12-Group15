@@ -108,7 +108,7 @@ namespace Client_System
                 string hmac = CreateHMAC(requestData, secretKey);
 
                 // Gửi yêu cầu cùng mã HMAC và API Key đến server
-                SendDataToServer(apiKey, requestData, hmac);
+                SendAPIKey(apiKey, requestData, hmac);
             }
             catch (SocketException)
             {
@@ -179,7 +179,7 @@ namespace Client_System
                 return Convert.ToBase64String(hashValue); // Trả về mã HMAC dưới dạng chuỗi Base64
             }
         }
-        private Task SendDataToServer(string apiKey, string data, string hmac)
+        private Task SendAPIKey(string apiKey, string data, string hmac)
         {
             try
             {
