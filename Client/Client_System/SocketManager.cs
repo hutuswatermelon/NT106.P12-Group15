@@ -23,7 +23,6 @@ public class SocketClientSingleton
     public event Action<string> MasterChanged;
     string Username = "";
     public bool inRoom = false;
-    //public event Action InitializationCompleted;
     public int roomNumber = 0;
     private SocketClientSingleton()
     {
@@ -41,7 +40,6 @@ public class SocketClientSingleton
             return instance;
         }
     }
-    public event Action ConnectionSuccessful;
     public event Action<int, int> PlayerCountChanged;
     public bool ConnectSuccess = false;
     public void BeginConnect(string ipAddress, int port, AsyncCallback callback)
@@ -58,11 +56,10 @@ public class SocketClientSingleton
         try
         {
             Client.EndConnect(ar);
-            string welcome = "Hello Server";
-            buffSend = Encoding.UTF8.GetBytes(welcome);
-
-            // Gửi dữ liệu chào mừng tới server
-            Client.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendData), Client);
+            //string welcome = "Hello Server";
+            //buffSend = Encoding.UTF8.GetBytes(welcome);
+            //// Gửi dữ liệu chào mừng tới server
+            //Client.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, new AsyncCallback(sendData), Client);
 
             // Bắt đầu nhận dữ liệu từ server ngay sau khi kết nối thành công
             BeginReceive(); // Gọi trực tiếp để nhận dữ liệu thay vì để frmStart.cs gọi.
@@ -70,7 +67,6 @@ public class SocketClientSingleton
             // Thông báo kết nối thành công
             MessageBox.Show("Kết nối thành công đến máy chủ.");
             ConnectSuccess = true;
-            //ConnectionSuccessful?.Invoke();
         }
         catch (SocketException)
         {
@@ -94,10 +90,6 @@ public class SocketClientSingleton
         Client.BeginSend(buffSend, 0, buffSend.Length, SocketFlags.None, callback, Client);
     }
 
-    public void BeginReceive(AsyncCallback callback)
-    {
-        Client.BeginReceive(buffReceive, 0, buffReceive.Length, SocketFlags.None, callback, Client);
-    }
     public void BeginReceive()
     {
         Client.BeginReceive(buffReceive, 0, buffReceive.Length, SocketFlags.None, new AsyncCallback(OnReceiveData), Client);
@@ -164,10 +156,8 @@ public class SocketClientSingleton
         
         else if (data.Length >= 8 && data.Substring(0, 8) == "#_TCP_MP")
         {
-            int roomId = int.Parse(data.Substring(8, 1));  // X represents the room ID
-            int newMaxPlayers = int.Parse(data.Substring(9, 1));  // Y represents the new maximum number of players
-
-            // Update the maximum number of players for the specified room
+            int roomId = int.Parse(data.Substring(8, 1));
+            int newMaxPlayers = int.Parse(data.Substring(9, 1));
             if (roomId >= 0 && roomId < playerOfRoom.GetLength(1))
             {
                 playerOfRoom[2, roomId] = newMaxPlayers;
