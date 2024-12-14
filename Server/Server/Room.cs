@@ -8,20 +8,12 @@ namespace frmServer
         private int roomNumber;
         private int storyTimeLimit = 15; // Thời gian cho mỗi câu chuyện
         private Dictionary<User, List<string>> userStories; // Lưu trữ danh sách câu chuyện của mỗi user
-        private Dictionary<User, List<string>> rotatedStories;
         private int currentRound = 0; // Vòng hiện tại
         private int maxRounds = 2; // Số lượt tối đa cho trò chơi
         private Dictionary<User, string> currentSentences; // Tạm lưu các câu trong vòng hiện tại
         private bool isGameStarted = false;
-        private System.Timers.Timer sentenceTimer;
         private bool isRoundSubmitted = false;
-        private int submissionsthisRound = 0;
         private int maxPlayers = 2;
-        public int SubmissionsthisRound
-        {
-            get { return submissionsthisRound; }
-            set { submissionsthisRound = value;}
-        }
         public bool IsRoundSubmitted
         {
             get { return isRoundSubmitted; }
@@ -67,7 +59,6 @@ namespace frmServer
             roomNumber = id;
             storyTimeLimit = 15;
             userStories = new Dictionary<User, List<string>>();
-            rotatedStories = new Dictionary<User, List<string>>();
             maxRounds = 2;
             currentRound = 0;
             currentSentences = new Dictionary<User, string>();
@@ -102,7 +93,6 @@ namespace frmServer
                 EndGame();
                 return;
             }
-            submissionsthisRound = 0;
             isRoundSubmitted = false;
             foreach (var user in listPlayer)
             {
@@ -132,7 +122,6 @@ namespace frmServer
                     else
                     {
                         currentSentences[user] = sentence;
-                        rotatedStories[user].Add(sentence);
                     }
 
                     user.HasSubmitted = true;
@@ -143,7 +132,6 @@ namespace frmServer
             }
         }
 
-        private Dictionary<User, User> userMapping;
         private readonly object lockObject = new object();
 
 
@@ -164,18 +152,15 @@ namespace frmServer
                         // Retrieve the sentence from the next player in rotation
                         string rotatedSentence = currentSentences[nextUser];
 
-                        // Append the rotated sentence to the current player's story
                         userStories[currentUser].Add(rotatedSentence);
 
-                        // Add to the list for possible feedback to players
                         rotatedSentences.Add(rotatedSentence);
                     }
                 }
 
-                // Do not clear `currentSentences` until you've processed the final round
-                if (currentRound < MaxRounds) // Adjust according to your round-count condition
+                if (currentRound < MaxRounds)
                 {
-                    currentSentences.Clear(); // Clear only if there are more rounds
+                    currentSentences.Clear();
                 }
 
                 return rotatedSentences;
@@ -187,34 +172,6 @@ namespace frmServer
         public void EndGame()
         {
             isGameStarted = false;
-        }
-        public void RotateStories()
-        {
-            lock (lockObject)
-            {
-                foreach (var user in listPlayer)
-                {
-                    // Xác định người chơi tiếp theo dựa trên vòng xoay
-                    int nextIndex = (listPlayer.IndexOf(user) + currentRound) % listPlayer.Count;
-                    User nextUser = listPlayer[nextIndex];
-
-                    // Lấy câu từ người chơi tiếp theo
-                    if (currentSentences.ContainsKey(nextUser))
-                    {
-                        string rotatedSentence = currentSentences[nextUser];
-
-                        // Lưu câu xoay vào danh sách câu chuyện của người chơi hiện tại
-                        if (!userStories.ContainsKey(user))
-                            userStories[user] = new List<string>();
-
-                        userStories[user].Add(rotatedSentence);
-                    }
-                }
-
-                // Xóa danh sách câu hiện tại sau khi xoay vòng
-                currentSentences.Clear();
-                submissionsthisRound = 0; // Đặt lại số lượt nộp
-            }
         }
 
         public string GetCompleteStories()
@@ -244,7 +201,6 @@ namespace frmServer
                 currentRound = 0;
                 isGameStarted = false;
                 isRoundSubmitted = false;
-                submissionsthisRound = 0;
                 storyTimeLimit = 15;
                 maxRounds = 2;
                 maxPlayers = 2;
@@ -253,7 +209,6 @@ namespace frmServer
                 // Xóa các danh sách và dictionary
                 currentSentences.Clear();
                 userStories.Clear();
-                rotatedStories.Clear();
 
                 // Đặt lại trạng thái của tất cả người chơi trong phòng
                 foreach (var user in listPlayer)
