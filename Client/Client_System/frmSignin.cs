@@ -81,15 +81,17 @@
                     MessageBox.Show("Tài khoản đang được sử dụng");
                     break;
                 case ServerCommand.SignInSuccess:
-                    this.Close();
+                    SocketClientSingleton.Instance.SetUserName(txtUsername.Text);
+                    
                     frmSignup su = Application.OpenForms["frmSignup"] as frmSignup;
                     if (su != null)
                     {
                         su.Close();
                     }
+                    this.Close();
                     //MessageBox.Show("Đăng nhập thành công");
                     new frmLobby().Show();
-                    SocketClientSingleton.Instance.SetUserName(txtUsername.Text);
+                    
 
                     break;
                 default:
